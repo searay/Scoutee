@@ -7,12 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D8BB6BA71B02F8F8005D8480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6BA61B02F8F8005D8480 /* AppDelegate.swift */; };
-		D8BB6BA91B02F8F8005D8480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6BA81B02F8F8005D8480 /* ViewController.swift */; };
-		D8BB6BAC1B02F8F8005D8480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6BAA1B02F8F8005D8480 /* Main.storyboard */; };
-		D8BB6BAE1B02F8F8005D8480 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6BAD1B02F8F8005D8480 /* Images.xcassets */; };
-		D8BB6BB11B02F8F8005D8480 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6BAF1B02F8F8005D8480 /* LaunchScreen.xib */; };
 		D8BB6BBD1B02F8F8005D8480 /* ScouteeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6BBC1B02F8F8005D8480 /* ScouteeTests.swift */; };
+		D8BB6BDD1B02F9EE005D8480 /* Scoutee WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6BDC1B02F9EE005D8480 /* Scoutee WatchKit App.app */; };
+		D8BB6BEA1B02F9EE005D8480 /* Scoutee WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D8BB6BD21B02F9EE005D8480 /* Scoutee WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D8BB6C031B02FA6A005D8480 /* ListingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6BF21B02FA6A005D8480 /* ListingTableCell.xib */; };
+		D8BB6C041B02FA6A005D8480 /* ListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6BF31B02FA6A005D8480 /* ListingDetailViewController.swift */; };
+		D8BB6C051B02FA6A005D8480 /* CategoryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6BF41B02FA6A005D8480 /* CategoryCollectionCell.xib */; };
+		D8BB6C071B02FA6A005D8480 /* ListingPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6BF61B02FA6A005D8480 /* ListingPhotoCell.xib */; };
+		D8BB6C081B02FA6A005D8480 /* ListingPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6BF71B02FA6A005D8480 /* ListingPhotoCell.swift */; };
+		D8BB6C091B02FA6A005D8480 /* SearchResultsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6BF81B02FA6A005D8480 /* SearchResultsListController.swift */; };
+		D8BB6C0A1B02FA6A005D8480 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6BF91B02FA6A005D8480 /* MainViewController.swift */; };
+		D8BB6C0B1B02FA6A005D8480 /* CategoryToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6BFA1B02FA6A005D8480 /* CategoryToggleCell.xib */; };
+		D8BB6C0C1B02FA6A005D8480 /* ListingOptionTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6BFB1B02FA6A005D8480 /* ListingOptionTableCell.xib */; };
+		D8BB6C0D1B02FA6A005D8480 /* ListingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6BFC1B02FA6A005D8480 /* ListingTableCell.swift */; };
+		D8BB6C0E1B02FA6A005D8480 /* CategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6BFD1B02FA6A005D8480 /* CategoryCollectionCell.swift */; };
+		D8BB6C0F1B02FA6A005D8480 /* CategoryToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6BFE1B02FA6A005D8480 /* CategoryToggleCell.swift */; };
+		D8BB6C101B02FA6A005D8480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6BFF1B02FA6A005D8480 /* AppDelegate.swift */; };
+		D8BB6C121B02FA6A005D8480 /* DistanceSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6C021B02FA6A005D8480 /* DistanceSettingCell.xib */; };
+		D8BB6C151B02FA7E005D8480 /* LocationPinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C131B02FA7E005D8480 /* LocationPinAnnotation.swift */; };
+		D8BB6C161B02FA7E005D8480 /* ListingOptionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C141B02FA7E005D8480 /* ListingOptionTableCell.swift */; };
+		D8BB6C281B02FAC0005D8480 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6C171B02FAC0005D8480 /* Images.xcassets */; };
+		D8BB6C291B02FAC0005D8480 /* PlaceFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C181B02FAC0005D8480 /* PlaceFinder.swift */; };
+		D8BB6C2A1B02FAC0005D8480 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C191B02FAC0005D8480 /* Listing.swift */; };
+		D8BB6C2B1B02FAC0005D8480 /* ResultsListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C1A1B02FAC0005D8480 /* ResultsListInterfaceController.swift */; };
+		D8BB6C2C1B02FAC0005D8480 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C1B1B02FAC0005D8480 /* InterfaceController.swift */; };
+		D8BB6C2D1B02FAC0005D8480 /* SubCategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C1C1B02FAC0005D8480 /* SubCategoriesController.swift */; };
+		D8BB6C2E1B02FAC0005D8480 /* ErrorInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C1D1B02FAC0005D8480 /* ErrorInfoController.swift */; };
+		D8BB6C2F1B02FAC0005D8480 /* MiscUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C1E1B02FAC0005D8480 /* MiscUtil.swift */; };
+		D8BB6C301B02FAC0005D8480 /* ListingDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C1F1B02FAC0005D8480 /* ListingDetailController.swift */; };
+		D8BB6C311B02FAC0005D8480 /* LocationQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C201B02FAC0005D8480 /* LocationQuery.swift */; };
+		D8BB6C321B02FAC0005D8480 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C211B02FAC0005D8480 /* ColorExtensions.swift */; };
+		D8BB6C331B02FAC0005D8480 /* ResultTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C221B02FAC0005D8480 /* ResultTableRowController.swift */; };
+		D8BB6C341B02FAC0005D8480 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C231B02FAC0005D8480 /* Category.swift */; };
+		D8BB6C361B02FAC0005D8480 /*  cafe2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6C251B02FAC0005D8480 /*  cafe2.jpeg */; };
+		D8BB6C371B02FAC0005D8480 /* cafe1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6C261B02FAC0005D8480 /* cafe1.jpeg */; };
+		D8BB6C381B02FAC0005D8480 /* ListingDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C271B02FAC0005D8480 /* ListingDetails.swift */; };
+		D8BB6C3B1B02FAD1005D8480 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C391B02FAD1005D8480 /* NotificationController.swift */; };
+		D8BB6C3C1B02FAD1005D8480 /* PushNotificationPayload.apns in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6C3A1B02FAD1005D8480 /* PushNotificationPayload.apns */; };
+		D8BB6C401B02FAF2005D8480 /* CatData.json in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6C3D1B02FAF2005D8480 /* CatData.json */; };
+		D8BB6C411B02FAF2005D8480 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6C3E1B02FAF2005D8480 /* Images.xcassets */; };
+		D8BB6C9B1B02FF4E005D8480 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C211B02FAC0005D8480 /* ColorExtensions.swift */; };
+		D8BB6C9C1B02FF4E005D8480 /* PlaceFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C181B02FAC0005D8480 /* PlaceFinder.swift */; };
+		D8BB6C9D1B02FF4E005D8480 /* LocationQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C201B02FAC0005D8480 /* LocationQuery.swift */; };
+		D8BB6C9E1B02FF4E005D8480 /* MiscUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C1E1B02FAC0005D8480 /* MiscUtil.swift */; };
+		D8BB6C9F1B02FF52005D8480 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C231B02FAC0005D8480 /* Category.swift */; };
+		D8BB6CA01B02FF52005D8480 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C191B02FAC0005D8480 /* Listing.swift */; };
+		D8BB6CA71B0300FB005D8480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6CA51B0300FB005D8480 /* Main.storyboard */; };
+		D8BB6CA81B0300FB005D8480 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6CA61B0300FB005D8480 /* LaunchScreen.xib */; };
+		D8BB6CA91B03017D005D8480 /* CatData.json in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6C3D1B02FAF2005D8480 /* CatData.json */; };
+		D8BB6CAA1B03017E005D8480 /* CatData.json in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6C3D1B02FAF2005D8480 /* CatData.json */; };
+		D8BB6CAB1B0301DE005D8480 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6C3E1B02FAF2005D8480 /* Images.xcassets */; };
+		D8BB6CAF1B030337005D8480 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6CAE1B030337005D8480 /* Images.xcassets */; };
+		D8BB6CB11B030378005D8480 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BB6CB01B030378005D8480 /* CoreLocation.framework */; };
+		D8BB6CB31B0308E7005D8480 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BB6CB21B0308E7005D8480 /* MapKit.framework */; };
+		D8BB6CB41B0308EF005D8480 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BB6CB01B030378005D8480 /* CoreLocation.framework */; };
+		D8BB6CB61B0309DC005D8480 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6C3E1B02FAF2005D8480 /* Images.xcassets */; };
+		D8BB6CC41B030E48005D8480 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6CC21B030E48005D8480 /* Interface.storyboard */; };
+		D8BB6CC51B030E48005D8480 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6CC21B030E48005D8480 /* Interface.storyboard */; };
+		D8BB6CC61B030E48005D8480 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6CC21B030E48005D8480 /* Interface.storyboard */; };
+		D8BB6CC71B030E48005D8480 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6CC21B030E48005D8480 /* Interface.storyboard */; };
+		D8BB6CC81B030E7E005D8480 /* CategoryTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C241B02FAC0005D8480 /* CategoryTableRowController.swift */; };
+		D8BB6CC91B030E7F005D8480 /* CategoryTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BB6C241B02FAC0005D8480 /* CategoryTableRowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,19 +78,89 @@
 			remoteGlobalIDString = D8BB6BA01B02F8F8005D8480;
 			remoteInfo = Scoutee;
 		};
+		D8BB6BDE1B02F9EE005D8480 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8BB6B991B02F8F8005D8480 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8BB6BDB1B02F9EE005D8480;
+			remoteInfo = "Scoutee WatchKit App";
+		};
+		D8BB6BE81B02F9EE005D8480 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8BB6B991B02F8F8005D8480 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8BB6BD11B02F9EE005D8480;
+			remoteInfo = "Scoutee WatchKit Extension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D8BB6BF11B02F9EE005D8480 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D8BB6BEA1B02F9EE005D8480 /* Scoutee WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D8BB6BA11B02F8F8005D8480 /* Scoutee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scoutee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BB6BA51B02F8F8005D8480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8BB6BA61B02F8F8005D8480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D8BB6BA81B02F8F8005D8480 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D8BB6BAB1B02F8F8005D8480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D8BB6BAD1B02F8F8005D8480 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D8BB6BB01B02F8F8005D8480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D8BB6BB61B02F8F8005D8480 /* ScouteeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScouteeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BB6BBB1B02F8F8005D8480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8BB6BBC1B02F8F8005D8480 /* ScouteeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScouteeTests.swift; sourceTree = "<group>"; };
+		D8BB6BD21B02F9EE005D8480 /* Scoutee WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Scoutee WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8BB6BD51B02F9EE005D8480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8BB6BDC1B02F9EE005D8480 /* Scoutee WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scoutee WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8BB6BE21B02F9EE005D8480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8BB6BF21B02FA6A005D8480 /* ListingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListingTableCell.xib; sourceTree = "<group>"; };
+		D8BB6BF31B02FA6A005D8480 /* ListingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingDetailViewController.swift; sourceTree = "<group>"; };
+		D8BB6BF41B02FA6A005D8480 /* CategoryCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCollectionCell.xib; sourceTree = "<group>"; };
+		D8BB6BF61B02FA6A005D8480 /* ListingPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListingPhotoCell.xib; sourceTree = "<group>"; };
+		D8BB6BF71B02FA6A005D8480 /* ListingPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingPhotoCell.swift; sourceTree = "<group>"; };
+		D8BB6BF81B02FA6A005D8480 /* SearchResultsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsListController.swift; sourceTree = "<group>"; };
+		D8BB6BF91B02FA6A005D8480 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D8BB6BFA1B02FA6A005D8480 /* CategoryToggleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryToggleCell.xib; sourceTree = "<group>"; };
+		D8BB6BFB1B02FA6A005D8480 /* ListingOptionTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListingOptionTableCell.xib; sourceTree = "<group>"; };
+		D8BB6BFC1B02FA6A005D8480 /* ListingTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingTableCell.swift; sourceTree = "<group>"; };
+		D8BB6BFD1B02FA6A005D8480 /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
+		D8BB6BFE1B02FA6A005D8480 /* CategoryToggleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryToggleCell.swift; sourceTree = "<group>"; };
+		D8BB6BFF1B02FA6A005D8480 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D8BB6C021B02FA6A005D8480 /* DistanceSettingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceSettingCell.xib; sourceTree = "<group>"; };
+		D8BB6C131B02FA7E005D8480 /* LocationPinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPinAnnotation.swift; sourceTree = "<group>"; };
+		D8BB6C141B02FA7E005D8480 /* ListingOptionTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingOptionTableCell.swift; sourceTree = "<group>"; };
+		D8BB6C171B02FAC0005D8480 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D8BB6C181B02FAC0005D8480 /* PlaceFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceFinder.swift; sourceTree = "<group>"; };
+		D8BB6C191B02FAC0005D8480 /* Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		D8BB6C1A1B02FAC0005D8480 /* ResultsListInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsListInterfaceController.swift; sourceTree = "<group>"; };
+		D8BB6C1B1B02FAC0005D8480 /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		D8BB6C1C1B02FAC0005D8480 /* SubCategoriesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCategoriesController.swift; sourceTree = "<group>"; };
+		D8BB6C1D1B02FAC0005D8480 /* ErrorInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorInfoController.swift; sourceTree = "<group>"; };
+		D8BB6C1E1B02FAC0005D8480 /* MiscUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscUtil.swift; sourceTree = "<group>"; };
+		D8BB6C1F1B02FAC0005D8480 /* ListingDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingDetailController.swift; sourceTree = "<group>"; };
+		D8BB6C201B02FAC0005D8480 /* LocationQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationQuery.swift; sourceTree = "<group>"; };
+		D8BB6C211B02FAC0005D8480 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		D8BB6C221B02FAC0005D8480 /* ResultTableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableRowController.swift; sourceTree = "<group>"; };
+		D8BB6C231B02FAC0005D8480 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		D8BB6C241B02FAC0005D8480 /* CategoryTableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableRowController.swift; sourceTree = "<group>"; };
+		D8BB6C251B02FAC0005D8480 /*  cafe2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = " cafe2.jpeg"; sourceTree = "<group>"; };
+		D8BB6C261B02FAC0005D8480 /* cafe1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cafe1.jpeg; sourceTree = "<group>"; };
+		D8BB6C271B02FAC0005D8480 /* ListingDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingDetails.swift; sourceTree = "<group>"; };
+		D8BB6C391B02FAD1005D8480 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		D8BB6C3A1B02FAD1005D8480 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		D8BB6C3D1B02FAF2005D8480 /* CatData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CatData.json; sourceTree = "<group>"; };
+		D8BB6C3E1B02FAF2005D8480 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D8BB6CA51B0300FB005D8480 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D8BB6CA61B0300FB005D8480 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		D8BB6CAE1B030337005D8480 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D8BB6CB01B030378005D8480 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D8BB6CB21B0308E7005D8480 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D8BB6CC31B030E48005D8480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../Documents/SWIFT DEV/WatchAround copy 9/WatchAround WatchKit App/Base.lproj/Interface.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8BB6CB11B030378005D8480 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,14 +179,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D8BB6BCF1B02F9EE005D8480 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8BB6CB41B0308EF005D8480 /* CoreLocation.framework in Frameworks */,
+				D8BB6CB31B0308E7005D8480 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		D8BB6B981B02F8F8005D8480 = {
 			isa = PBXGroup;
 			children = (
+				D8BB6CB21B0308E7005D8480 /* MapKit.framework */,
+				D8BB6CB01B030378005D8480 /* CoreLocation.framework */,
+				D8BB6CAE1B030337005D8480 /* Images.xcassets */,
 				D8BB6BA31B02F8F8005D8480 /* Scoutee */,
 				D8BB6BB91B02F8F8005D8480 /* ScouteeTests */,
+				D8BB6BD31B02F9EE005D8480 /* Scoutee WatchKit Extension */,
+				D8BB6BE01B02F9EE005D8480 /* Scoutee WatchKit App */,
 				D8BB6BA21B02F8F8005D8480 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +210,8 @@
 			children = (
 				D8BB6BA11B02F8F8005D8480 /* Scoutee.app */,
 				D8BB6BB61B02F8F8005D8480 /* ScouteeTests.xctest */,
+				D8BB6BD21B02F9EE005D8480 /* Scoutee WatchKit Extension.appex */,
+				D8BB6BDC1B02F9EE005D8480 /* Scoutee WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,11 +219,12 @@
 		D8BB6BA31B02F8F8005D8480 /* Scoutee */ = {
 			isa = PBXGroup;
 			children = (
-				D8BB6BA61B02F8F8005D8480 /* AppDelegate.swift */,
-				D8BB6BA81B02F8F8005D8480 /* ViewController.swift */,
-				D8BB6BAA1B02F8F8005D8480 /* Main.storyboard */,
-				D8BB6BAD1B02F8F8005D8480 /* Images.xcassets */,
-				D8BB6BAF1B02F8F8005D8480 /* LaunchScreen.xib */,
+				D8BB6CA41B0300B6005D8480 /* Xibs */,
+				D8BB6CA31B030012005D8480 /* CollectionCells */,
+				D8BB6CA21B03000A005D8480 /* TableCells */,
+				D8BB6CA11B02FFF5005D8480 /* Controllers */,
+				D8BB6C131B02FA7E005D8480 /* LocationPinAnnotation.swift */,
+				D8BB6BFF1B02FA6A005D8480 /* AppDelegate.swift */,
 				D8BB6BA41B02F8F8005D8480 /* Supporting Files */,
 			);
 			path = Scoutee;
@@ -112,6 +255,128 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D8BB6BD31B02F9EE005D8480 /* Scoutee WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB6C911B02FB96005D8480 /* DTO */,
+				D8BB6C901B02FB8C005D8480 /* Common */,
+				D8BB6C8F1B02FB4E005D8480 /* Controllers */,
+				D8BB6C3A1B02FAD1005D8480 /* PushNotificationPayload.apns */,
+				D8BB6C171B02FAC0005D8480 /* Images.xcassets */,
+				D8BB6C251B02FAC0005D8480 /*  cafe2.jpeg */,
+				D8BB6C261B02FAC0005D8480 /* cafe1.jpeg */,
+				D8BB6BD41B02F9EE005D8480 /* Supporting Files */,
+			);
+			path = "Scoutee WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		D8BB6BD41B02F9EE005D8480 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB6BD51B02F9EE005D8480 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D8BB6BE01B02F9EE005D8480 /* Scoutee WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB6CC21B030E48005D8480 /* Interface.storyboard */,
+				D8BB6C3D1B02FAF2005D8480 /* CatData.json */,
+				D8BB6C3E1B02FAF2005D8480 /* Images.xcassets */,
+				D8BB6BE11B02F9EE005D8480 /* Supporting Files */,
+			);
+			path = "Scoutee WatchKit App";
+			sourceTree = "<group>";
+		};
+		D8BB6BE11B02F9EE005D8480 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB6BE21B02F9EE005D8480 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D8BB6C8F1B02FB4E005D8480 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB6C1A1B02FAC0005D8480 /* ResultsListInterfaceController.swift */,
+				D8BB6C1C1B02FAC0005D8480 /* SubCategoriesController.swift */,
+				D8BB6C391B02FAD1005D8480 /* NotificationController.swift */,
+				D8BB6C221B02FAC0005D8480 /* ResultTableRowController.swift */,
+				D8BB6C1D1B02FAC0005D8480 /* ErrorInfoController.swift */,
+				D8BB6C1B1B02FAC0005D8480 /* InterfaceController.swift */,
+				D8BB6C241B02FAC0005D8480 /* CategoryTableRowController.swift */,
+				D8BB6C1F1B02FAC0005D8480 /* ListingDetailController.swift */,
+				D8BB6C271B02FAC0005D8480 /* ListingDetails.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D8BB6C901B02FB8C005D8480 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB6C211B02FAC0005D8480 /* ColorExtensions.swift */,
+				D8BB6C181B02FAC0005D8480 /* PlaceFinder.swift */,
+				D8BB6C201B02FAC0005D8480 /* LocationQuery.swift */,
+				D8BB6C1E1B02FAC0005D8480 /* MiscUtil.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		D8BB6C911B02FB96005D8480 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB6C231B02FAC0005D8480 /* Category.swift */,
+				D8BB6C191B02FAC0005D8480 /* Listing.swift */,
+			);
+			name = DTO;
+			sourceTree = "<group>";
+		};
+		D8BB6CA11B02FFF5005D8480 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB6BF31B02FA6A005D8480 /* ListingDetailViewController.swift */,
+				D8BB6BF91B02FA6A005D8480 /* MainViewController.swift */,
+				D8BB6BF81B02FA6A005D8480 /* SearchResultsListController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D8BB6CA21B03000A005D8480 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB6BF21B02FA6A005D8480 /* ListingTableCell.xib */,
+				D8BB6BFC1B02FA6A005D8480 /* ListingTableCell.swift */,
+				D8BB6BF61B02FA6A005D8480 /* ListingPhotoCell.xib */,
+				D8BB6BF71B02FA6A005D8480 /* ListingPhotoCell.swift */,
+				D8BB6BFA1B02FA6A005D8480 /* CategoryToggleCell.xib */,
+				D8BB6BFE1B02FA6A005D8480 /* CategoryToggleCell.swift */,
+				D8BB6BFB1B02FA6A005D8480 /* ListingOptionTableCell.xib */,
+				D8BB6C141B02FA7E005D8480 /* ListingOptionTableCell.swift */,
+				D8BB6C021B02FA6A005D8480 /* DistanceSettingCell.xib */,
+			);
+			name = TableCells;
+			sourceTree = "<group>";
+		};
+		D8BB6CA31B030012005D8480 /* CollectionCells */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB6BFD1B02FA6A005D8480 /* CategoryCollectionCell.swift */,
+				D8BB6BF41B02FA6A005D8480 /* CategoryCollectionCell.xib */,
+			);
+			name = CollectionCells;
+			sourceTree = "<group>";
+		};
+		D8BB6CA41B0300B6005D8480 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB6CA51B0300FB005D8480 /* Main.storyboard */,
+				D8BB6CA61B0300FB005D8480 /* LaunchScreen.xib */,
+			);
+			name = Xibs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,10 +387,12 @@
 				D8BB6B9D1B02F8F8005D8480 /* Sources */,
 				D8BB6B9E1B02F8F8005D8480 /* Frameworks */,
 				D8BB6B9F1B02F8F8005D8480 /* Resources */,
+				D8BB6BF11B02F9EE005D8480 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D8BB6BE91B02F9EE005D8480 /* PBXTargetDependency */,
 			);
 			name = Scoutee;
 			productName = Scoutee;
@@ -150,6 +417,39 @@
 			productReference = D8BB6BB61B02F8F8005D8480 /* ScouteeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D8BB6BD11B02F9EE005D8480 /* Scoutee WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8BB6BEE1B02F9EE005D8480 /* Build configuration list for PBXNativeTarget "Scoutee WatchKit Extension" */;
+			buildPhases = (
+				D8BB6BCE1B02F9EE005D8480 /* Sources */,
+				D8BB6BCF1B02F9EE005D8480 /* Frameworks */,
+				D8BB6BD01B02F9EE005D8480 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8BB6BDF1B02F9EE005D8480 /* PBXTargetDependency */,
+			);
+			name = "Scoutee WatchKit Extension";
+			productName = "Scoutee WatchKit Extension";
+			productReference = D8BB6BD21B02F9EE005D8480 /* Scoutee WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		D8BB6BDB1B02F9EE005D8480 /* Scoutee WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8BB6BEB1B02F9EE005D8480 /* Build configuration list for PBXNativeTarget "Scoutee WatchKit App" */;
+			buildPhases = (
+				D8BB6BDA1B02F9EE005D8480 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Scoutee WatchKit App";
+			productName = "Scoutee WatchKit App";
+			productReference = D8BB6BDC1B02F9EE005D8480 /* Scoutee WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -161,10 +461,19 @@
 				TargetAttributes = {
 					D8BB6BA01B02F8F8005D8480 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 2FSRHMEYB6;
 					};
 					D8BB6BB51B02F8F8005D8480 = {
 						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = D8BB6BA01B02F8F8005D8480;
+					};
+					D8BB6BD11B02F9EE005D8480 = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 2FSRHMEYB6;
+					};
+					D8BB6BDB1B02F9EE005D8480 = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 2FSRHMEYB6;
 					};
 				};
 			};
@@ -183,6 +492,8 @@
 			targets = (
 				D8BB6BA01B02F8F8005D8480 /* Scoutee */,
 				D8BB6BB51B02F8F8005D8480 /* ScouteeTests */,
+				D8BB6BD11B02F9EE005D8480 /* Scoutee WatchKit Extension */,
+				D8BB6BDB1B02F9EE005D8480 /* Scoutee WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -192,9 +503,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8BB6BAC1B02F8F8005D8480 /* Main.storyboard in Resources */,
-				D8BB6BB11B02F8F8005D8480 /* LaunchScreen.xib in Resources */,
-				D8BB6BAE1B02F8F8005D8480 /* Images.xcassets in Resources */,
+				D8BB6C121B02FA6A005D8480 /* DistanceSettingCell.xib in Resources */,
+				D8BB6C071B02FA6A005D8480 /* ListingPhotoCell.xib in Resources */,
+				D8BB6CA71B0300FB005D8480 /* Main.storyboard in Resources */,
+				D8BB6CAB1B0301DE005D8480 /* Images.xcassets in Resources */,
+				D8BB6CC41B030E48005D8480 /* Interface.storyboard in Resources */,
+				D8BB6CAF1B030337005D8480 /* Images.xcassets in Resources */,
+				D8BB6CA91B03017D005D8480 /* CatData.json in Resources */,
+				D8BB6C031B02FA6A005D8480 /* ListingTableCell.xib in Resources */,
+				D8BB6C0B1B02FA6A005D8480 /* CategoryToggleCell.xib in Resources */,
+				D8BB6C0C1B02FA6A005D8480 /* ListingOptionTableCell.xib in Resources */,
+				D8BB6CA81B0300FB005D8480 /* LaunchScreen.xib in Resources */,
+				D8BB6C051B02FA6A005D8480 /* CategoryCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +522,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8BB6CC51B030E48005D8480 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8BB6BD01B02F9EE005D8480 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8BB6BDD1B02F9EE005D8480 /* Scoutee WatchKit App.app in Resources */,
+				D8BB6CB61B0309DC005D8480 /* Images.xcassets in Resources */,
+				D8BB6C361B02FAC0005D8480 /*  cafe2.jpeg in Resources */,
+				D8BB6CAA1B03017E005D8480 /* CatData.json in Resources */,
+				D8BB6C371B02FAC0005D8480 /* cafe1.jpeg in Resources */,
+				D8BB6C281B02FAC0005D8480 /* Images.xcassets in Resources */,
+				D8BB6CC61B030E48005D8480 /* Interface.storyboard in Resources */,
+				D8BB6C3C1B02FAD1005D8480 /* PushNotificationPayload.apns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8BB6BDA1B02F9EE005D8480 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8BB6C401B02FAF2005D8480 /* CatData.json in Resources */,
+				D8BB6CC71B030E48005D8480 /* Interface.storyboard in Resources */,
+				D8BB6C411B02FAF2005D8480 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,8 +558,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8BB6BA91B02F8F8005D8480 /* ViewController.swift in Sources */,
-				D8BB6BA71B02F8F8005D8480 /* AppDelegate.swift in Sources */,
+				D8BB6C9C1B02FF4E005D8480 /* PlaceFinder.swift in Sources */,
+				D8BB6C101B02FA6A005D8480 /* AppDelegate.swift in Sources */,
+				D8BB6C041B02FA6A005D8480 /* ListingDetailViewController.swift in Sources */,
+				D8BB6C081B02FA6A005D8480 /* ListingPhotoCell.swift in Sources */,
+				D8BB6C0D1B02FA6A005D8480 /* ListingTableCell.swift in Sources */,
+				D8BB6C0E1B02FA6A005D8480 /* CategoryCollectionCell.swift in Sources */,
+				D8BB6CC81B030E7E005D8480 /* CategoryTableRowController.swift in Sources */,
+				D8BB6C9E1B02FF4E005D8480 /* MiscUtil.swift in Sources */,
+				D8BB6C091B02FA6A005D8480 /* SearchResultsListController.swift in Sources */,
+				D8BB6C9D1B02FF4E005D8480 /* LocationQuery.swift in Sources */,
+				D8BB6C161B02FA7E005D8480 /* ListingOptionTableCell.swift in Sources */,
+				D8BB6C9F1B02FF52005D8480 /* Category.swift in Sources */,
+				D8BB6C151B02FA7E005D8480 /* LocationPinAnnotation.swift in Sources */,
+				D8BB6CA01B02FF52005D8480 /* Listing.swift in Sources */,
+				D8BB6C0A1B02FA6A005D8480 /* MainViewController.swift in Sources */,
+				D8BB6C0F1B02FA6A005D8480 /* CategoryToggleCell.swift in Sources */,
+				D8BB6C9B1B02FF4E005D8480 /* ColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +586,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D8BB6BCE1B02F9EE005D8480 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8BB6C3B1B02FAD1005D8480 /* NotificationController.swift in Sources */,
+				D8BB6C2B1B02FAC0005D8480 /* ResultsListInterfaceController.swift in Sources */,
+				D8BB6C321B02FAC0005D8480 /* ColorExtensions.swift in Sources */,
+				D8BB6C301B02FAC0005D8480 /* ListingDetailController.swift in Sources */,
+				D8BB6C311B02FAC0005D8480 /* LocationQuery.swift in Sources */,
+				D8BB6C2C1B02FAC0005D8480 /* InterfaceController.swift in Sources */,
+				D8BB6CC91B030E7F005D8480 /* CategoryTableRowController.swift in Sources */,
+				D8BB6C2F1B02FAC0005D8480 /* MiscUtil.swift in Sources */,
+				D8BB6C331B02FAC0005D8480 /* ResultTableRowController.swift in Sources */,
+				D8BB6C2A1B02FAC0005D8480 /* Listing.swift in Sources */,
+				D8BB6C291B02FAC0005D8480 /* PlaceFinder.swift in Sources */,
+				D8BB6C2E1B02FAC0005D8480 /* ErrorInfoController.swift in Sources */,
+				D8BB6C381B02FAC0005D8480 /* ListingDetails.swift in Sources */,
+				D8BB6C2D1B02FAC0005D8480 /* SubCategoriesController.swift in Sources */,
+				D8BB6C341B02FAC0005D8480 /* Category.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -233,23 +616,25 @@
 			target = D8BB6BA01B02F8F8005D8480 /* Scoutee */;
 			targetProxy = D8BB6BB71B02F8F8005D8480 /* PBXContainerItemProxy */;
 		};
+		D8BB6BDF1B02F9EE005D8480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8BB6BDB1B02F9EE005D8480 /* Scoutee WatchKit App */;
+			targetProxy = D8BB6BDE1B02F9EE005D8480 /* PBXContainerItemProxy */;
+		};
+		D8BB6BE91B02F9EE005D8480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8BB6BD11B02F9EE005D8480 /* Scoutee WatchKit Extension */;
+			targetProxy = D8BB6BE81B02F9EE005D8480 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D8BB6BAA1B02F8F8005D8480 /* Main.storyboard */ = {
+		D8BB6CC21B030E48005D8480 /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D8BB6BAB1B02F8F8005D8480 /* Base */,
+				D8BB6CC31B030E48005D8480 /* Base */,
 			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D8BB6BAF1B02F8F8005D8480 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D8BB6BB01B02F8F8005D8480 /* Base */,
-			);
-			name = LaunchScreen.xib;
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -340,7 +725,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Scoutee/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -350,7 +737,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Scoutee/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -390,6 +779,66 @@
 			};
 			name = Release;
 		};
+		D8BB6BEC1B02F9EE005D8480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = Scoutee_WatchKit_Extension;
+				INFOPLIST_FILE = "Scoutee WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		D8BB6BED1B02F9EE005D8480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IBSC_MODULE = Scoutee_WatchKit_Extension;
+				INFOPLIST_FILE = "Scoutee WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
+		D8BB6BEF1B02F9EE005D8480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Scoutee WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D8BB6BF01B02F9EE005D8480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Scoutee WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -409,6 +858,7 @@
 				D8BB6BC21B02F8F8005D8480 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8BB6BC31B02F8F8005D8480 /* Build configuration list for PBXNativeTarget "ScouteeTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +867,25 @@
 				D8BB6BC51B02F8F8005D8480 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8BB6BEB1B02F9EE005D8480 /* Build configuration list for PBXNativeTarget "Scoutee WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8BB6BEC1B02F9EE005D8480 /* Debug */,
+				D8BB6BED1B02F9EE005D8480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8BB6BEE1B02F9EE005D8480 /* Build configuration list for PBXNativeTarget "Scoutee WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8BB6BEF1B02F9EE005D8480 /* Debug */,
+				D8BB6BF01B02F9EE005D8480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

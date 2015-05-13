@@ -1,0 +1,283 @@
+ [
+  {
+  "name": "eat & drink",
+  "icon": "fork-knife.png",
+  "big-icon" : "food-menu.png",
+  "color" : {
+        "red" : "0.46411604899999997",
+        "green" : "0.60271531339999995",
+        "blue" : "0.35548108519999999"
+  },
+  "subCategories": [
+                    {
+                    "name": "restaurants",
+                    "icon": "food-sign.png",
+                    "search_key": "restaurant&keyword=restaurant",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "fast food",
+                    "icon": "pizza.png",
+                    "search_key": "restaurant&keyword=fast%20food",
+                    "toggable" : "false"
+                    },
+
+                    {
+                    "name": "cafe's",
+                    "icon": "tea.png",
+                    "search_key": "cafe",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "bakery",
+                    "icon": "cake.png",
+                    "search_key": "bakery",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "bars",
+                    "icon": "beer.png",
+                    "search_key": "bar|pub&keyword=pub",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "liquor stores",
+                    "icon": "wine.png",
+                    "search_key": "liquor_store",
+                    "toggable" : "true"
+                    },
+                    {
+                    "name": "night clubs",
+                    "icon": "dancing-couple.png",
+                    "search_key": "night_club",
+                    "toggable" : "true"
+                    }
+                    ]
+  },
+  {
+  "name": "shopping",
+  "icon": "shop.png",
+  "big-icon" : "man-shopping-cart-full.png",
+  "color" : {
+        "red" : "0.92156869173049927",
+        "green" : "0.50196081399917603",
+        "blue" : "0.63529413938522339"
+  },
+  "subCategories": [
+                    {
+                    "name": "groceries",
+                    "icon": "basket.png",
+                    "search_key": "grocery_or_supermarket",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "department stores",
+                    "icon": "prom-suit.png",
+                    "search_key": "department_store",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "pharmacy",
+                    "icon": "first-aid-kit.png",
+                    "search_key": "pharmacy",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "car dealers",
+                    "icon": "car-side.png",
+                    "search_key": "car_dealer",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "book store",
+                    "icon": "diary.png",
+                    "search_key": "book_store",
+                    "toggable" : "true"
+                    },
+                    {
+                    "name": "clothing",
+                    "icon": "trouser.png",
+                    "search_key": "convenience_store|clothing_store",
+                    "toggable" : "false"
+                    },	
+                    {
+                    "name": "salons",
+                    "icon": "shampoo.png",
+                    "search_key": "hair_care|spa|beauty_salon&keyword=hair%20cut",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "hair cuts",
+                    "icon": "scissor-metal.png",
+                    "search_key": "beauty_salon&keyword=hair%20cut",
+                    "toggable" : "false"
+                    },
+
+                    {
+                    "name": "pet store",
+                    "icon": "fish-bowl.png",
+                    "search_key": "pet_store",
+                    "toggable" : "true"
+                    },
+                    {
+                    "name": "malls",
+                    "icon": "commercial-building.png",
+                    "search_key": "shopping_mall",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "hardware stores",
+                    "icon": "lawn-mower.png",
+                    "search_key": "hardware_store",
+                    "toggable" : "true"
+                    }
+                    ]
+  },
+  {
+  "name": "leisure",
+  "icon": "movies.png",
+  "big-icon": "drama.png",
+  "color" : {
+        "red" : "0.9215686917",
+        "green" : "0.73725491759999995",
+        "blue" : "0.36470589040000001"
+  },
+  "subCategories": [
+                    {
+                    "name": "aquarium",
+                    "icon": "fish-bowl.png",
+                    "search_key": "aquarium",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "parks",
+                    "icon": "pine-tree.png",
+                    "search_key": "park",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "movie theaters",
+                    "icon": "movies.png",
+                    "search_key": "movie_theater",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "bowling",
+                    "icon": "button-record.png",
+                    "search_key": "bowling_alley",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "museum",
+                    "icon": "mansion.png",
+                    "search_key": "museum",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "amusement parks",
+                    "icon": "space-rocket-mini.png",
+                    "search_key": "amusement_park",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "zoo",
+                    "icon": "elephant.png",
+                    "search_key": "zoo",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "casino",
+                    "icon": "dice.png",
+                    "search_key": "casino",
+                    "toggable" : "true"
+                    },
+                    {
+                    "name": "gym",
+                    "icon": "treadmill-exercise.png",
+                    "search_key": "gym",
+                    "toggable" : "true"
+                    }
+                    ]
+  },
+  {
+  "name": "travel",
+  "icon": "airplane-black.png",
+  "big-icon": "airplane.png",
+  "color" : {
+    "red" : "0.19607844948768616",
+    "green" : "0.61960786581039429",
+    "blue" : "0.90588241815567017"
+  
+  
+  },
+  "subCategories": [
+                    {
+                    "name": "parking",
+                    "icon": "car-side.png",
+                    "search_key": "parking",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "gas",
+                    "icon": "gas-station.png",
+                    "search_key": "gas_station&keyword=gas%20station",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "subway station",
+                    "icon": "light-rail-train.png",
+                    "search_key": "subway_station",
+                    "toggable" : "true"
+                    },
+                    {
+                    "name": "train station",
+                    "icon": "train.png",
+                    "search_key": "train_station",
+                    "toggable" : "true"
+                    },
+                    {
+                    "name": "bus station",
+                    "icon": "bus-side.png",
+                    "search_key": "bus_station",
+                    "toggable" : "true"
+                    },
+                    {
+                    "name": "airport",
+                    "icon": "airplane-depart.png",
+                    "search_key": "airport",
+                    "toggable" : "false"
+                    }
+                    ]
+  },
+  {
+  "name": "other",
+  "icon": "item-list-arrange.png",
+  "big-icon": "apps.png",
+  "color" : {
+    "red" : "0.76470595598220825",
+    "green" : "0.87843143939971924",
+    "blue" : "0.94117653369903564"
+  },
+  
+  "subCategories": [
+                    {
+                    "name": "bank & ATM's",
+                    "icon": "dollar-sign.png",
+                    "search_key": "bank|atm",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "hospital",
+                    "icon": "medical-sign.png",
+                    "search_key": "hospital|doctor",
+                    "toggable" : "false"
+                    },
+                    {
+                    "name": "police",
+                    "icon": "captain.png",
+                    "search_key": "police",
+                    "toggable" : "true"
+                    }
+                ]
+  }
+  ]

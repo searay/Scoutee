@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EOi-JM-UMb">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--Watch Around-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController title="Watch Around" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="MainViewController" customModule="Scoutee" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="categoryCollectionView" bounces="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1eP-wm-XZt">
+                                <rect key="frame" x="0.0" y="0.0" width="423" height="112"/>
+                                <color key="backgroundColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="3" id="xjd-k3-8qI">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="9pa-WY-X5I"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="ftj-E6-0dm"/>
+                                </connections>
+                            </collectionView>
+                            <tableView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="p8N-TX-lIT">
+                                <rect key="frame" x="0.0" y="112" width="600" height="471"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="NwO-41-DHO"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="zVq-M1-rid"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scoutee" id="glF-FA-C4V">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="mXa-xh-H6b">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="eVT-Ck-Fv2" kind="show" id="dIR-ee-az3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mainCategoriesCollView" destination="1eP-wm-XZt" id="6gq-f7-Vse"/>
+                        <outlet property="subCategoryTableView" destination="p8N-TX-lIT" id="aEV-MM-pjq"/>
+                        <segue destination="tKd-xL-d6J" kind="show" identifier="ShowResults" id="Prq-bD-XQD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="573" y="18"/>
+        </scene>
+        <!--Results-->
+        <scene sceneID="WSX-AI-18K">
+            <objects>
+                <viewController title="Results" automaticallyAdjustsScrollViewInsets="NO" id="tKd-xL-d6J" customClass="SearchResultsListController" customModule="Scoutee" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rpW-ug-FEP"/>
+                        <viewControllerLayoutGuide type="bottom" id="5VC-2Q-ACb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0G3-Qm-aYH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="PQg-Ix-gXa">
+                                <rect key="frame" x="0.0" y="45" width="605" height="581"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tKd-xL-d6J" id="147-69-FzD"/>
+                                    <outlet property="delegate" destination="tKd-xL-d6J" id="CLf-7N-hY4"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R8f-ug-Hq2">
+                                <rect key="frame" x="0.0" y="0.0" width="605" height="44"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fPC-wV-boy">
+                                        <rect key="frame" x="156" y="8" width="92" height="29"/>
+                                        <segments>
+                                            <segment title="" image="map-pin-down-mini.png"/>
+                                            <segment title="" image="star-mini.png"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="sortValueChanged:" destination="tKd-xL-d6J" eventType="valueChanged" id="KDE-Nw-7TB"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="resultsListView" destination="PQg-Ix-gXa" id="Hyo-Iy-Hgw"/>
+                        <outlet property="sortBySwitch" destination="fPC-wV-boy" id="Avc-1M-eHT"/>
+                        <outlet property="switchContainer" destination="R8f-ug-Hq2" id="SNR-Xc-hzY"/>
+                        <segue destination="tbr-7W-Dbj" kind="show" identifier="ShowListingDetails" id="WPF-qC-INW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WJo-pX-8h9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301" y="-26"/>
+        </scene>
+        <!--Info-->
+        <scene sceneID="erm-ko-pGv">
+            <objects>
+                <viewController title="Info" automaticallyAdjustsScrollViewInsets="NO" id="tbr-7W-Dbj" customClass="ListingDetailViewController" customModule="Scoutee" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Tv-eK-aNa"/>
+                        <viewControllerLayoutGuide type="bottom" id="Slt-iT-wf1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Tl-2g-WAr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4u-wv-1I7">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGU-8I-8Ps">
+                                        <rect key="frame" x="8" y="8" width="59" height="28"/>
+                                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="14"/>
+                                        <state key="normal" image="telephone-out-mini.png">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="callListing:" destination="tbr-7W-Dbj" eventType="touchUpInside" id="Wbg-lb-Ohn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFD-lO-VMF">
+                                        <rect key="frame" x="82" y="6" width="35" height="30"/>
+                                        <state key="normal" image="car-blue">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="driveHere:" destination="tbr-7W-Dbj" eventType="touchUpInside" id="ecK-HT-oVN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dr4-lV-CWM">
+                                        <rect key="frame" x="139" y="11" width="34" height="21"/>
+                                        <state key="normal" image="man-walking">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="walkHere:" destination="tbr-7W-Dbj" eventType="touchUpInside" id="hzO-fb-Pvj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.23286695710455763" green="0.23286695710455763" blue="0.23286695710455763" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="f77-72-QAm">
+                                <rect key="frame" x="0.0" y="44" width="600" height="284"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9M3-1H-j0m">
+                                <rect key="frame" x="5" y="333" width="125" height="21"/>
+                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="97B-Uy-CQL">
+                                <rect key="frame" x="0.0" y="359" width="600" height="307"/>
+                                <color key="backgroundColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mkp-b5-4Vl">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wFd-oC-aUo">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="tbr-7W-Dbj" id="cma-Jn-LgH"/>
+                                    <outlet property="delegate" destination="tbr-7W-Dbj" id="Hvc-ai-viW"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92941182850000004" green="0.53725492949999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="tintColor" red="0.89782591879999996" green="0.89892346519999999" blue="0.91567187500000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="listingLocationMap" destination="f77-72-QAm" id="eOX-8k-n5N"/>
+                        <outlet property="photoCollectionView" destination="97B-Uy-CQL" id="TqN-N6-x1c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8zr-RL-w3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1947" y="-26"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="0EG-b6-jWB">
+            <objects>
+                <viewController title="Settings" id="eVT-Ck-Fv2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lvc-GW-GKF"/>
+                        <viewControllerLayoutGuide type="bottom" id="qfU-jl-GHe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V6D-PK-kAq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cA6-sv-NdE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301" y="665"/>
+        </scene>
+        <!--Scoutee-->
+        <scene sceneID="PDD-Qe-ECa">
+            <objects>
+                <navigationController autoresizesArchivedViewToFullSize="NO" title="Scoutee" id="EOi-JM-UMb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dtz-Uv-vOz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.5069942087817525" green="0.72308165338899855" blue="0.8816184401512146" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="21"/>
+                            <color key="textColor" red="0.26438263629999997" green="0.31990317610000002" blue="0.37445542900000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textShadowColor" red="0.76470595600000002" green="0.87843143940000001" blue="0.94117653369999998" alpha="1" colorSpace="deviceRGB"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="2" vertical="1"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Cud-9a-mnm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hiR-Uo-oni" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-305" y="64"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="car-blue" width="30" height="30"/>
+        <image name="man-walking" width="30" height="30"/>
+        <image name="map-pin-down-mini.png" width="20" height="20"/>
+        <image name="star-mini.png" width="20" height="20"/>
+        <image name="telephone-out-mini.png" width="20" height="20"/>
+    </resources>
+</document>
