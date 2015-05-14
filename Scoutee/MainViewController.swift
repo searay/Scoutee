@@ -44,7 +44,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         var flowLayout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
         
-        self.mainCategoriesCollView.contentSize = CGSize(width: self.view.frame.size.width+200, height: 74)
+        self.mainCategoriesCollView.contentSize = CGSize(width: self.view.frame.size.width-100, height: 74)
         self.mainCategoriesCollView.setCollectionViewLayout(flowLayout, animated: true)
     }
     

@@ -59,7 +59,12 @@ class ResultsListInterfaceController : WKInterfaceController {
                     
                             row.listingNameLabel.setText(listing.name)
                             row.listingDistanceLabel.setText(MiscUtil.getDistanceFormatted(listing.distance))
-                            row.listingOpenCloseLabel.setText(listing.open ? " Open" : " Closed")
+                            
+                            if listing.open == "Unknown" {
+                                row.listingOpenCloseLabel.setText("")
+                            } else {
+                                row.listingOpenCloseLabel.setText(listing.open == "Open" ? " Open" :  " Closed")
+                            }
                             row.listingGroup.setBackgroundColor(MiscUtil.hexStringToUIColor(color))
                     
                             if listing.rating > 0 {

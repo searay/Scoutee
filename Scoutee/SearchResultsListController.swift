@@ -112,19 +112,30 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
         cell.listingAddressLabel.text = listing.vicinity
         cell.listingDistanceLabel.text =  getDistanceFormatted(listing.distance)
         cell.listingRatingLabel.text = getRatingStars(listing.rating)
-        cell.listingAvailabilityLabel.text = listing.open ? "Open" : "Closed"
+        cell.listingOpenStatusImage.hidden = false
+        cell.listingAvailabilityLabel.hidden = (listing.open == "Unknown") ? true : false
         
-        if listing.open != true {
-            cell.listingAvailabilityLabel.backgroundColor = UIColor.orangeColor()
+        
+        var isOpen = (listing.open == "Open") ? true : false
+            
+        cell.listingAvailabilityLabel.text = isOpen ? "Open" : "Closed"
+        
+        if isOpen == false {
+            //cell.listingAvailabilityLabel.backgroundColor = UIColor.orangeColor()
         }
         
-        cell.listingAvailabilityLabel.hidden = listing.open ? true : false;
-        cell.listingOpenStatusImage.hidden = listing.open  ? false : true;
-        
-        cell.listingAvailabilityLabel.textColor = listing.open ? UIColor.blackColor() : UIColor.whiteColor()
+        cell.listingAvailabilityLabel.hidden = isOpen ? true : false;
+        cell.listingOpenStatusImage.hidden = isOpen  ? false : true;
+        //cell.listingAvailabilityLabel.textColor = isOpen ? UIColor.blackColor() : UIColor.whiteColor()
         cell.selectionStyle = UITableViewCellSelectionStyle.Blue
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-    
+        
+        if listing.open == "Unknown" {
+            cell.listingAvailabilityLabel.hidden = true
+            cell.listingOpenStatusImage.hidden = true
+        }
+        
+            
         
         //UIColor(red: 0.23529413342475891, green: 0.91764712333679199, blue: 0.86666673421859741, alpha: 1)
         return cell

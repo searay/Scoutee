@@ -19,6 +19,6 @@ class Listing
     
     var location : String = "0,0"
     var rating : Double = 0.0
-    var open : Bool = false
+    var open : String = "Unknown"
     var pics : [NSString] = []
 }

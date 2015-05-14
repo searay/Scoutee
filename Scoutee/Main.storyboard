@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--Watch Around-->
+        <!--Scoutee-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController title="Watch Around" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="MainViewController" customModule="Scoutee" sceneMemberID="viewController">
+                <viewController title="Scoutee" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="MainViewController" customModule="Scoutee" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -16,9 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="categoryCollectionView" bounces="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1eP-wm-XZt">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="categoryCollectionView" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" indicatorStyle="black" delaysContentTouches="NO" maximumZoomScale="9" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1eP-wm-XZt">
                                 <rect key="frame" x="0.0" y="0.0" width="423" height="112"/>
-                                <color key="backgroundColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.97254908084869385" green="0.56862747669219971" blue="0.19215688109397888" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="3" id="xjd-k3-8qI">
                                     <size key="itemSize" width="50" height="50"/>
@@ -32,7 +32,7 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="ftj-E6-0dm"/>
                                 </connections>
                             </collectionView>
-                            <tableView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="p8N-TX-lIT">
+                            <tableView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" maximumZoomScale="16" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="p8N-TX-lIT">
                                 <rect key="frame" x="0.0" y="112" width="600" height="471"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -44,17 +44,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Scoutee" id="glF-FA-C4V">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="mXa-xh-H6b">
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="eVT-Ck-Fv2" kind="show" id="dIR-ee-az3"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title=" " id="tb7-94-lfb"/>
                     </navigationItem>
                     <connections>
                         <outlet property="mainCategoriesCollView" destination="1eP-wm-XZt" id="6gq-f7-Vse"/>
                         <outlet property="subCategoryTableView" destination="p8N-TX-lIT" id="aEV-MM-pjq"/>
-                        <segue destination="tKd-xL-d6J" kind="show" identifier="ShowResults" id="Prq-bD-XQD"/>
+                        <segue destination="tKd-xL-d6J" kind="show" identifier="ShowResults" id="d2M-bs-YCu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -73,7 +68,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="PQg-Ix-gXa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" alwaysBounceVertical="YES" maximumZoomScale="16" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="PQg-Ix-gXa">
                                 <rect key="frame" x="0.0" y="45" width="605" height="581"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -90,16 +85,20 @@
                                             <segment title="" image="map-pin-down-mini.png"/>
                                             <segment title="" image="star-mini.png"/>
                                         </segments>
+                                        <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="sortValueChanged:" destination="tKd-xL-d6J" eventType="valueChanged" id="KDE-Nw-7TB"/>
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
-                                <color key="backgroundColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.92941182850000004" green="0.53725492949999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Results" id="IkF-Os-IY4">
+                        <barButtonItem key="backBarButtonItem" title=" " id="F3A-oi-eJv"/>
+                    </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="resultsListView" destination="PQg-Ix-gXa" id="Hyo-Iy-Hgw"/>
@@ -110,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJo-pX-8h9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1301" y="-26"/>
+            <point key="canvasLocation" x="1412" y="-82"/>
         </scene>
         <!--Info-->
         <scene sceneID="erm-ko-pGv">
@@ -124,8 +123,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f77-72-QAm">
+                                <rect key="frame" x="0.0" y="43" width="600" height="603"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.090196080509999998" alpha="1" colorSpace="deviceRGB"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Photos" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9M3-1H-j0m">
+                                <rect key="frame" x="0.0" y="257" width="54" height="21"/>
+                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="17"/>
+                                <color key="textColor" red="0.89782591879999996" green="0.89892346519999999" blue="0.91567187500000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="97B-Uy-CQL">
+                                <rect key="frame" x="0.0" y="486" width="600" height="1"/>
+                                <color key="backgroundColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mkp-b5-4Vl">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wFd-oC-aUo">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="tbr-7W-Dbj" id="cma-Jn-LgH"/>
+                                    <outlet property="delegate" destination="tbr-7W-Dbj" id="Hvc-ai-viW"/>
+                                </connections>
+                            </collectionView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4u-wv-1I7">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="389" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGU-8I-8Ps">
                                         <rect key="frame" x="8" y="8" width="59" height="28"/>
@@ -156,48 +192,29 @@
                                             <action selector="walkHere:" destination="tbr-7W-Dbj" eventType="touchUpInside" id="hzO-fb-Pvj"/>
                                         </connections>
                                     </button>
+                                    <tabBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" itemPositioning="centered" itemSpacing="24" itemWidth="52" translatesAutoresizingMaskIntoConstraints="NO" id="PZN-lb-BoD">
+                                        <rect key="frame" x="-15" y="-5" width="404" height="49"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50980395079999996" blue="0.68235296010000002" alpha="1" colorSpace="deviceRGB"/>
+                                        <items>
+                                            <tabBarItem title="Call" image="telephone-mini" id="XPi-CJ-0ma"/>
+                                            <tabBarItem title="Drive Here" image="car-side" id="bL3-CG-Wxi"/>
+                                            <tabBarItem title="Walk Here" image="man-walking" id="jD7-cb-6iM"/>
+                                            <tabBarItem title="Visit WebSite" image="wifi" id="oG3-Aj-f1q"/>
+                                        </items>
+                                        <color key="tintColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="barTintColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tabBar>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23286695710455763" green="0.23286695710455763" blue="0.23286695710455763" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="f77-72-QAm">
-                                <rect key="frame" x="0.0" y="44" width="600" height="284"/>
-                            </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9M3-1H-j0m">
-                                <rect key="frame" x="5" y="333" width="125" height="21"/>
-                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
-                            </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="97B-Uy-CQL">
-                                <rect key="frame" x="0.0" y="359" width="600" height="307"/>
-                                <color key="backgroundColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mkp-b5-4Vl">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wFd-oC-aUo">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="tbr-7W-Dbj" id="cma-Jn-LgH"/>
-                                    <outlet property="delegate" destination="tbr-7W-Dbj" id="Hvc-ai-viW"/>
-                                </connections>
-                            </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.92941182850000004" green="0.53725492949999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                         <color key="tintColor" red="0.89782591879999996" green="0.89892346519999999" blue="0.91567187500000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Information" id="wnO-ml-NA1">
+                        <barButtonItem key="backBarButtonItem" title=" ." id="Y8b-zL-Owy"/>
+                    </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="listingLocationMap" destination="f77-72-QAm" id="eOX-8k-n5N"/>
                         <outlet property="photoCollectionView" destination="97B-Uy-CQL" id="TqN-N6-x1c"/>
@@ -205,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zr-RL-w3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1947" y="-26"/>
+            <point key="canvasLocation" x="2246" y="-53"/>
         </scene>
         <!--Settings-->
         <scene sceneID="0EG-b6-jWB">
@@ -216,7 +233,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qfU-jl-GHe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="V6D-PK-kAq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -230,15 +247,14 @@
             <objects>
                 <navigationController autoresizesArchivedViewToFullSize="NO" title="Scoutee" id="EOi-JM-UMb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dtz-Uv-vOz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" backIndicatorImage="arrow-back" id="dtz-Uv-vOz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.5069942087817525" green="0.72308165338899855" blue="0.8816184401512146" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="21"/>
-                            <color key="textColor" red="0.26438263629999997" green="0.31990317610000002" blue="0.37445542900000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="textShadowColor" red="0.76470595600000002" green="0.87843143940000001" blue="0.94117653369999998" alpha="1" colorSpace="deviceRGB"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="21"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <offsetWrapper key="textShadowOffset" horizontal="2" vertical="1"/>
                         </textAttributes>
                     </navigationBar>
@@ -253,10 +269,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow-back" width="30" height="30"/>
         <image name="car-blue" width="30" height="30"/>
+        <image name="car-side" width="30" height="30"/>
         <image name="man-walking" width="30" height="30"/>
-        <image name="map-pin-down-mini.png" width="20" height="20"/>
+        <image name="map-pin-down-mini.png" width="29" height="30"/>
         <image name="star-mini.png" width="20" height="20"/>
+        <image name="telephone-mini" width="20" height="20"/>
         <image name="telephone-out-mini.png" width="20" height="20"/>
+        <image name="wifi" width="30" height="30"/>
     </resources>
 </document>

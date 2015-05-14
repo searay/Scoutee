@@ -12,7 +12,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Texas Road House" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFV-6X-NJu">
                     <rect key="frame" x="13" y="8" width="287" height="21"/>
-                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="18"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="19"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -24,7 +24,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OPEN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbW-oi-cEt">
                     <rect key="frame" x="308" y="8" width="60" height="21"/>
-                    <color key="backgroundColor" red="0.50699420880000001" green="0.72308165339999997" blue="0.88161844020000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="0.090196080505847931" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -37,7 +37,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*****" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5F-NA-b2v">
                     <rect key="frame" x="13" y="35" width="138" height="25"/>
                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="27"/>
-                    <color key="textColor" red="0.33282377990000001" green="0.56104893040000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.9215686917" green="0.91372555489999996" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                     <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <size key="shadowOffset" width="1" height="1"/>

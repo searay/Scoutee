@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        UINavigationBar.appearance().backIndicatorImage = UIImage(named: "arrow-back")
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "arrow-back")
         return true
     }
     

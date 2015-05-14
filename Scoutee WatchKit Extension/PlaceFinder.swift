@@ -161,8 +161,8 @@
             }
             
             if let openHoursRoot = result.valueForKey("opening_hours") as? NSDictionary {
-                let isOpen =    openHoursRoot.valueForKey("open_now") as! Bool
-                listingItem.open = isOpen
+                let isOpen = openHoursRoot.valueForKey("open_now") as! Bool
+                listingItem.open = (isOpen) ? "Open" : "Closed"
             }
             
             // current location
