@@ -12,15 +12,25 @@
     
     class PlaceFinder : NSObject,NSURLConnectionDataDelegate {
         
-        let apiKey = "AIzaSyCjfOWwKoajoY8gPHaIvSyUEZPztFmWY80"
+        static let apiKey = "AIzaSyBAJF32sh8J8voeAP525xwHXEeylAXQ66g" //"AIzaSyCjfOWwKoajoY8gPHaIvSyUEZPztFmWY80"
         
         override init() {
             super.init()
         }
         
+        func getImageByRef(ref : String) -> UIImage {
+            
+            let picUrl = NSURL(string : "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(ref)&key=\(PlaceFinder.apiKey)")
+            let picData = NSData(contentsOfURL: picUrl!)
+            let pic = UIImage(data: picData!) as UIImage!
+            
+            return pic
+        }
+        
+        
         func getListingContactNumber(placeId : String) -> String{
             var phone = String("")
-            let queryString = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(placeId)&key=\(apiKey)&rankby=distance"
+            let queryString = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(placeId)&key=\(PlaceFinder.apiKey)"
             
             if let url = NSURL(string: queryString)
             {
@@ -67,10 +77,36 @@
             return distInMeters
         }
         
-        func findListing(Query : LocationQuery,SortByDistance : Bool) -> [Listing]
+        func getResults(Query : LocationQuery,SortByDistance : Bool) -> [Listing] {
+            
+            var allResults : NSMutableDictionary = findListing(Query, SortByDistance: SortByDistance,Rank : false)
+            var rankedResults : NSMutableDictionary = findListing(Query, SortByDistance: SortByDistance,Rank : true)
+            
+            var placeIdsRanked : [String] = rankedResults.allKeys as! [String]
+            var allPlaceIds : [String]  = allResults.allKeys as! [String]
+            
+            for (index,placeid) in enumerate(placeIdsRanked) {
+                if contains(allPlaceIds, placeid) == false {
+                    allResults.setObject(rankedResults[placeid] as! Listing, forKey: placeid)
+                }
+            }
+            
+            var items : [Listing] =  allResults.allValues as! [Listing]
+            
+            return sortListings(items, byDistance: SortByDistance)
+            
+        }
+        
+        func findListing(Query : LocationQuery,SortByDistance : Bool,Rank : Bool) -> NSMutableDictionary
         {
-            var listings : [Listing] = []
-            var queryString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(Query.location!)&radius=\(Query.distance)&types=\(Query.what!)&key=\(apiKey)"
+            var listings : NSMutableDictionary = NSMutableDictionary()
+            
+            
+            var queryString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(Query.location!)&radius=\(Query.distance)&types=\(Query.what!)&key=\(PlaceFinder.apiKey)"
+            
+            if Rank == true {
+                queryString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(Query.location!)&rankby=distance&types=\(Query.what!)&key=\(PlaceFinder.apiKey)"
+            }
             
             
             if let url = NSURL(string: queryString)
@@ -93,7 +129,7 @@
                             for result in results {
                                 if result.allKeys.count > 0 {
                                     let listingItem = getListingFromDict(result,queryLocation:Query.location)
-                                    listings.append(listingItem)
+                                    listings.setValue(listingItem, forKey: listingItem.id!)
                                 }
                             }
                             
@@ -101,7 +137,7 @@
                             
                             if let pageToken = nextPageToken as NSString? {
                                 if pageToken.length > 0 {
-                                    var queryStringNextPage = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=\(pageToken)&key=\(apiKey)"
+                                    var queryStringNextPage = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=\(pageToken)&key=\(PlaceFinder.apiKey)"
                                     
                                     if let nextPageUrl = NSURL(string: queryStringNextPage)
                                     {
@@ -112,7 +148,7 @@
                                         let datanp = NSURLConnection.sendSynchronousRequest(urlRequestnp, returningResponse: &urlResponsenp, error: errornp)
                                         
                                         if datanp != nil {
-                                            let jsonDatanp : NSDictionary =  NSJSONSerialization.JSONObjectWithData(datanp!, options: NSJSONReadingOptions.AllowFragments, error: error) as! NSDictionary
+                                            let jsonDatanp : NSDictionary =  NSJSONSerialization.JSONObjectWithData(datanp!, options: NSJSONReadingOptions.AllowFragments, error: errornp) as! NSDictionary
                                             
                                             let statusnp = jsonDatanp.valueForKey("status") as! String
                                             let resultsnp = jsonDatanp.valueForKey("results") as! Array<NSDictionary>
@@ -121,7 +157,10 @@
                                                 if resultsnp.capacity > 0 {
                                                     for resultnp in resultsnp {
                                                         if resultnp.allKeys.count > 0 {
-                                                            listings.append(getListingFromDict(resultnp, queryLocation: Query.location))
+                                                            var listing : Listing = getListingFromDict(resultnp, queryLocation: Query.location)
+                                                            
+                                                            listings.setValue(listing, forKey: listing.id!)
+                                                            
                                                         }
                                                     }
                                                 }
@@ -134,7 +173,7 @@
                     }
                 }
             }
-            return sortListings(listings,byDistance : SortByDistance)
+            return listings //sortListings(listings,byDistance : SortByDistance)
         }
         
         func getListingFromDict(result : NSDictionary,queryLocation : String) -> Listing {
@@ -185,7 +224,86 @@
             return listingItem
         }
         
-        
+        func getListingDetailById(id : String) -> ListingDetail {
+            var listingInfo = ListingDetail()
+            let queryString = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(id)&key=\(PlaceFinder.apiKey)"
+            
+            if let url = NSURL(string: queryString)
+            {
+                var urlRequest : NSMutableURLRequest = NSMutableURLRequest(URL: url)
+                var urlResponse : NSURLResponse?
+                var error : NSErrorPointer = nil
+                let data = NSURLConnection.sendSynchronousRequest(urlRequest, returningResponse: &urlResponse, error: error)
+                
+                if data != nil
+                {
+                    var jsonData : NSDictionary =  NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: error) as! NSDictionary
+                    
+                    var status = jsonData.valueForKey("status") as! String
+                    var result = jsonData.valueForKey("result") as! NSDictionary
+                    
+                    if status == "OK"
+                    {
+                        if result.allKeys.count > 0
+                        {
+                            
+                            if let phone = result.valueForKey("formatted_phone_number") as? String {
+                                listingInfo.phoneNumber = formatPhoneNumber(phone)
+                            }
+                            
+                            if let openHours = result.valueForKey("opening_hours") as? NSDictionary {
+                                if let hours = openHours.valueForKey("weekday_text") as! NSArray? {
+                                    for hour in hours {
+                                        listingInfo.hours.append("\(hour)")
+                                    }
+                                    
+                                }
+                            }
+                            
+                            if let photos = result.valueForKey("photos") as? NSArray {
+                                for photo in photos {
+                                    var ref = (photo as! NSDictionary).valueForKey("photo_reference") as! String
+                                    listingInfo.photos.append(ref)
+                                }
+                            }
+                            
+                            if listingInfo.photos.count < 1 {
+                                listingInfo.photos.append("no-images")
+                            }
+                            
+                            if let site = result.valueForKey("website") as? NSString {
+                                listingInfo.webSite = site
+                            }
+                            
+                            if let reviews = result.valueForKey("reviews") as? NSArray {
+                                for review in reviews {
+                                    let reviewObj = review as! NSDictionary
+                                    
+                                    var reviewItem = CustomerReview()
+                                    
+                                    if let reviewer = reviewObj.valueForKey("author_name") as? String {
+                                        reviewItem.name = reviewer
+                                    }
+                                    
+                                    if let reviewText = reviewObj.valueForKey("text") as? String{
+                                        reviewItem.reviewText = reviewText
+                                    }
+                                    
+                                    if let rating = reviewObj.valueForKey("rating") as? Double {
+                                        reviewItem.rating = rating
+                                    }
+                                    
+                                    listingInfo.reviews.append(reviewItem)
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            
+            return listingInfo
+        }
 
         
         func sortListings(listings : [Listing],byDistance : Bool) -> [Listing]{

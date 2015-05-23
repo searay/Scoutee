@@ -12,7 +12,7 @@
                     {
                     "name": "restaurants",
                     "icon": "food-sign.png",
-                    "search_key": "restaurant&keyword=restaurant",
+                    "search_key": "restaurant&keyword=food",
                     "toggable" : "false"
                     },
                     {
@@ -21,7 +21,6 @@
                     "search_key": "restaurant&keyword=fast%20food",
                     "toggable" : "false"
                     },
-
                     {
                     "name": "cafe's",
                     "icon": "tea.png",
@@ -40,6 +39,13 @@
                     "search_key": "bar|pub&keyword=pub",
                     "toggable" : "false"
                     },
+                    {
+                    "name": "hotels",
+                    "icon": "bed.png",
+                    "search_key": "lodging",
+                    "toggable" : "false"
+                    },
+
                     {
                     "name": "liquor stores",
                     "icon": "wine.png",

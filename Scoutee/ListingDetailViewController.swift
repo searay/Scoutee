@@ -10,11 +10,16 @@ import CoreLocation
 import MapKit
 
 
-class ListingDetailViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    @IBOutlet weak var listingPhoto: UIImageView!
-    let apiKey = "AIzaSyCjfOWwKoajoY8gPHaIvSyUEZPztFmWY80"
-    var listing : Listing = Listing()
+class ListingDetailViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,
+UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var listingPhoto: UIImageView!
+    
+    var listing : Listing = Listing()
+    var listingDetail : ListingDetail = ListingDetail()
+    var selectedImage : UIImage = UIImage()
+    
+    @IBOutlet weak var reviewTable: UITableView!
     @IBOutlet weak var listingLocationMap: MKMapView!
     @IBOutlet weak var actionToolbar: UIToolbar!
     
@@ -60,16 +65,95 @@ class ListingDetailViewController: UIViewController,UICollectionViewDelegate, UI
             listingLocationMap.addAnnotation(annotation)
             listingLocationMap.setRegion(region, animated: true)
             
+            if let id = listing.id as String? {
+                self.listingDetail = PlaceFinder().getListingDetailById(id)
+            }
                         
             var nib = UINib(nibName: "ListingPhotoCell", bundle: nil)
+            
             self.photoCollectionView.registerNib(nib, forCellWithReuseIdentifier: "ListingPhotoCell")
+            
+            let doubleTapGuesture : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("handlePhotoSelection:"))
+            
+            var nibOfReviewTable = UINib(nibName: "ListingReviewTableCell", bundle: nil)
+            self.reviewTable.registerNib(nibOfReviewTable, forCellReuseIdentifier: "reviewcell")
+            
             
             var flowLayout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
             flowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
             
+            
             self.photoCollectionView.contentSize = CGSize(width: self.view.frame.size.width+200, height: 54)
             self.photoCollectionView.setCollectionViewLayout(flowLayout, animated: true)
+            self.listingLocationMap.zoomEnabled = false
+            self.listingLocationMap.scrollEnabled = false
+            self.listingLocationMap.userInteractionEnabled = false
         }
+    }
+    
+    func handlePhotoSelection(rec : UITapGestureRecognizer) {
+        performSegueWithIdentifier("ShowImage", sender: self)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let segueIdentifier = segue.identifier as String?
+        {
+            if segueIdentifier == "ShowWebSite" {
+                let destinationController : ListingWebViewController = segue.destinationViewController as! ListingWebViewController
+                destinationController.webSite = listingDetail.webSite as String
+                destinationController.title = listing.name as String!
+            }
+            else if segueIdentifier == "ShowReview" {
+                let destinationController : ListingReviewController = segue.destinationViewController as! ListingReviewController
+                
+                if let path = self.reviewTable.indexPathForSelectedRow() as NSIndexPath? {
+                    let reviewCell : ListingReviewTableCell = self.reviewTable.cellForRowAtIndexPath(path) as! ListingReviewTableCell
+                
+                    
+                    destinationController.review.name = reviewCell.reviewAuthorLabel.text as String!
+                    destinationController.review.reviewText = reviewCell.reviewTextView.text as String!
+                    destinationController.review.rating = Double(count(reviewCell.reviewRatingLabel.text!)) 
+                }
+            }
+            else if segueIdentifier == "ShowImage" {
+                let destinationController : ListingImageDisplayController = segue.destinationViewController as! ListingImageDisplayController
+            
+                destinationController.listingImage = self.selectedImage
+                
+            }
+        }
+    }
+    
+       
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listingDetail.reviews.count
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 120
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        var cell : ListingReviewTableCell = self.reviewTable.dequeueReusableCellWithIdentifier("reviewcell", forIndexPath: indexPath) as! ListingReviewTableCell
+        
+        cell.reviewAuthorLabel.text = listingDetail.reviews[indexPath.row].name
+        cell.reviewTextView.text = listingDetail.reviews[indexPath.row].reviewText
+        cell.reviewRatingLabel.text = MiscUtil.getRatingStars(listingDetail.reviews[indexPath.row].rating)
+        
+        return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("ShowReview", sender: self)
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell : ListingPhotoCell = self.photoCollectionView.cellForItemAtIndexPath(indexPath) as! ListingPhotoCell
+        
+        self.selectedImage = cell.businessPhotoImage.image!
+        
+        performSegueWithIdentifier("ShowImage", sender: self)
     }
     
     override func viewDidLayoutSubviews() {
@@ -158,53 +242,65 @@ class ListingDetailViewController: UIViewController,UICollectionViewDelegate, UI
         mapItem.openInMapsWithLaunchOptions(launchOptions)
     }
     
+    
     func collectionView(collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 370, height: 300)
+        return CGSize(width: 125, height: 107)
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         var cell : ListingPhotoCell = self.photoCollectionView.dequeueReusableCellWithReuseIdentifier("ListingPhotoCell", forIndexPath: indexPath) as! ListingPhotoCell
         
-        if let photos = listing.pics as NSArray? {
-            if photos.count > 0 {
+            cell.layer.cornerRadius = 6
+            cell.layer.masksToBounds = true
+        
+            if cell.businessPhotoImage == nil || cell.businessPhotoImage.image == nil {
+        
+            if let photos = self.listingDetail.photos as NSArray? {
+                if photos.count > 0 {
+                    
+                    let photoName = photos[indexPath.row] as! String
                 
-                let imageUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(photos[indexPath.row])&key=\(apiKey)"
+                    if photoName == "no-images" {
+                        cell.businessPhotoImage.image = UIImage(named: "noimages")
+                    }
+                    else {
+                        let imageUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=640&maxheight=1000&photoreference=\(photos[indexPath.row])&key=\(PlaceFinder.apiKey)"
                 
-                let url = NSURL(string: imageUrl)
-                var err: NSError?
+                        let url = NSURL(string: imageUrl)
+                        var err: NSError?
                 
-                if let imageData : NSData = NSData(contentsOfURL: url!, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &err) as NSData? {
+                        if let imageData : NSData = NSData(contentsOfURL: url!, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &err) as      NSData? {
                 
-                    if err == nil {
-                        var img = UIImage(data:imageData)
-                        cell.businessPhotoImage.image = img
+                        if err == nil {
+                                var img = UIImage(data:imageData)
+                                cell.businessPhotoImage.image = img
+                            }
+                        }
                     }
                 }
-                
             }
         }
         
         return cell;
     }
-
-    
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        if let cell : CategoryCollectionCell = collectionView.cellForItemAtIndexPath(indexPath) as? CategoryCollectionCell {
-            
-            cell.selectIndicatorImage.hidden = true
-        }
-    }
-    
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let photos = listing.pics as NSArray? {
-            return photos.count
-        } else {
-            return 0
-        }
-
+        return self.listingDetail.photos.count
     }
-
+   
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var headerView : UIView = UIView(frame: CGRectMake(0, 0, self.reviewTable.frame.width, 32)) as UIView!
+        
+        headerView.backgroundColor = UIColor.darkGrayColor()
+        
+        var titleLabel = UILabel(frame: CGRectMake(20, 0, self.reviewTable.frame.width, 22)) as UILabel
+        titleLabel.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 18.0)
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.text = "Reviews"
+        
+        headerView.addSubview(titleLabel)
+        return headerView
+    }
 }
 

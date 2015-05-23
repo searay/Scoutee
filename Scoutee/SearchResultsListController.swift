@@ -66,12 +66,16 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUp()
+    }
+    
+    func setUp() {
         self.initializeLocationService()
         populateResultsList()
         
+        
         var nib = UINib(nibName: "ListingTableCell", bundle: nil)
         self.resultsListView.registerNib(nib, forCellReuseIdentifier: "listingCell")
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -110,8 +114,8 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
         
         cell.listingNameLabel.text = listing.name
         cell.listingAddressLabel.text = listing.vicinity
-        cell.listingDistanceLabel.text =  getDistanceFormatted(listing.distance)
-        cell.listingRatingLabel.text = getRatingStars(listing.rating)
+        cell.listingDistanceLabel.text =  MiscUtil.getDistanceFormatted(listing.distance)
+        cell.listingRatingLabel.text = MiscUtil.getRatingStars(listing.rating)
         cell.listingOpenStatusImage.hidden = false
         cell.listingAvailabilityLabel.hidden = (listing.open == "Unknown") ? true : false
         
@@ -141,28 +145,6 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
-    func getDistanceFormatted(distance: Double) -> String {
-        var dist = String(format: "%.2f meters",distance)
-        
-        if distance > 1609.0 {
-            dist = String(format: "%.2f miles",distance/1609)
-        } else {
-            dist = String(format: "%.2f km",distance/1000)
-        }
-        
-        return dist;
-    }
-
-    func getRatingStars(rating : Double) -> String {
-        var ratingLabelText = ""
-        var i : Double
-        
-        for i = 0; i < round(rating); i++ {
-            ratingLabelText += "*"
-        }
-        
-        return ratingLabelText
-    }
     
     func populateResultsList() {
         var dist = 30000
@@ -178,7 +160,7 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
             let query : LocationQuery = LocationQuery(what:encodedQueryString,location:locationString,distance:dist)
             let finder : PlaceFinder = PlaceFinder()
         
-            self.listings = finder.findListing(query,SortByDistance : sortBySwitch.selectedSegmentIndex==0 ? true : false) as [Listing]
+            self.listings = finder.getResults(query,SortByDistance : sortBySwitch.selectedSegmentIndex==0 ? true : false) as [Listing]
        }
     }
 }

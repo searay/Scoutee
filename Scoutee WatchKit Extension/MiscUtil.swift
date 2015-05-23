@@ -10,6 +10,18 @@ import Foundation
 import WatchKit
 
 class MiscUtil {
+    
+    class func getRatingStars(rating : Double) -> String {
+        var ratingLabelText = ""
+        var i : Double
+        
+        for i = 0; i < round(rating); i++ {
+            ratingLabelText += "*"
+        }
+        
+        return ratingLabelText
+    }
+
     class func parseColor(colorDict : NSDictionary) -> UIColor {
         
         let red : Double = (colorDict["red"] as! NSString).doubleValue

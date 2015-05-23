@@ -47,7 +47,7 @@ class ResultsListInterfaceController : WKInterfaceController {
                     let query : LocationQuery = LocationQuery(what:encodedQueryString,location:locationInf,distance:dist)
                     var finder : PlaceFinder = PlaceFinder()
             
-                    listings = finder.findListing(query,SortByDistance : true) as [Listing]
+                    listings = finder.getResults(query,SortByDistance : true) as [Listing]
             
                     if(listings.count > 0)
                     {

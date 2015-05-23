@@ -156,10 +156,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.categoryImage.image = UIImage(named: image)
         }
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.Blue
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        
-        
         return cell
     }
     
