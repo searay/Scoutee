@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D80CCF141B0FC1E4005E90AD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BB6C3E1B02FAF2005D8480 /* Images.xcassets */; };
+		D82EBC161B2174C200BD7CEE /* startScreenIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D82EBC151B2174C200BD7CEE /* startScreenIcon.png */; };
 		D87804ED1B05971E00AA8AF9 /* ListingDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87804EC1B05971E00AA8AF9 /* ListingDetail.swift */; };
 		D87804EF1B05974600AA8AF9 /* CustomerReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87804EE1B05974600AA8AF9 /* CustomerReview.swift */; };
 		D87804F01B0597A300AA8AF9 /* ListingDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87804EC1B05971E00AA8AF9 /* ListingDetail.swift */; };
@@ -119,6 +120,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D82EBC151B2174C200BD7CEE /* startScreenIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startScreenIcon.png; sourceTree = "<group>"; };
 		D87804EC1B05971E00AA8AF9 /* ListingDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingDetail.swift; sourceTree = "<group>"; };
 		D87804EE1B05974600AA8AF9 /* CustomerReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerReview.swift; sourceTree = "<group>"; };
 		D87804F31B0670BA00AA8AF9 /* ListingReviewTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingReviewTableCell.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				D8BB6CB21B0308E7005D8480 /* MapKit.framework */,
 				D8BB6CB01B030378005D8480 /* CoreLocation.framework */,
 				D8BB6CAE1B030337005D8480 /* Images.xcassets */,
+				D82EBC151B2174C200BD7CEE /* startScreenIcon.png */,
 				D8BB6BA31B02F8F8005D8480 /* Scoutee */,
 				D8BB6BB91B02F8F8005D8480 /* ScouteeTests */,
 				D8BB6BD31B02F9EE005D8480 /* Scoutee WatchKit Extension */,
@@ -532,6 +535,7 @@
 				D8BB6CA91B03017D005D8480 /* CatData.json in Resources */,
 				D8BB6C031B02FA6A005D8480 /* ListingTableCell.xib in Resources */,
 				D87804F61B0670BA00AA8AF9 /* ListingReviewTableCell.xib in Resources */,
+				D82EBC161B2174C200BD7CEE /* startScreenIcon.png in Resources */,
 				D8BB6C0B1B02FA6A005D8480 /* CategoryToggleCell.xib in Resources */,
 				D8BB6C0C1B02FA6A005D8480 /* ListingOptionTableCell.xib in Resources */,
 				D8BB6CA81B0300FB005D8480 /* LaunchScreen.xib in Resources */,
@@ -755,9 +759,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Scoutee/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -768,9 +773,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Scoutee/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -814,7 +820,7 @@
 		D8BB6BEC1B02F9EE005D8480 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconWatch;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -833,7 +839,7 @@
 		D8BB6BED1B02F9EE005D8480 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconWatch;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				IBSC_MODULE = Scoutee_WatchKit_Extension;
 				INFOPLIST_FILE = "Scoutee WatchKit App/Info.plist";
