@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,CLLocationManagerDelegate {
 
     @IBOutlet weak var mainCategoriesCollView: UICollectionView!
     @IBOutlet weak var subCategoryTableView: UITableView!
@@ -17,6 +18,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var categoryHeaderNames : [String] = []
     var categoryIcons : [String] = []
     var currentIndex : Int = 0
+    var locationManager : CLLocationManager = CLLocationManager()
     
     let TABLE_CELL_NIB_NAME = "CategoryToggleCell"
     let TABLE_CELL_REUSE_ID  = "listingCell"
@@ -29,6 +31,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         setUp()
     }
     
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+       locationManager.stopUpdatingLocation()
+    }
     
     func setUp() {
         
@@ -46,6 +55,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.mainCategoriesCollView.contentSize = CGSize(width: self.view.frame.size.width-100, height: 74)
         self.mainCategoriesCollView.setCollectionViewLayout(flowLayout, animated: true)
+        
+        self.locationManagerTest()
+    }
+    
+    func locationManagerTest() {
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startMonitoringSignificantLocationChanges()
+        locationManager.requestWhenInUseAuthorization()
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath
@@ -109,9 +129,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "ShowResults" {
-            let destinationController : SearchResultsListController = segue.destinationViewController as! SearchResultsListController
-            destinationController.searchKey = getSearchKeyFromSelectedRow()
+        if self.locationManager.location != nil {
+            if segue.identifier == "ShowResults" {
+                let destinationController : SearchResultsListController = segue.destinationViewController as! SearchResultsListController
+                destinationController.searchKey = getSearchKeyFromSelectedRow()
+            }
         }
     }
     
@@ -127,8 +149,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("ShowResults", sender: self)
+        if self.locationManager.location != nil {
+            
+             self.performSegueWithIdentifier("ShowResults", sender: self)
+        } else {
+            
+            var msgBox : UIAlertView = UIAlertView()
+            msgBox.title = "Error"
+            msgBox.message = "Unable to get current location. Please check if location services is enabled on this device."
+            msgBox.delegate = self
+            msgBox.addButtonWithTitle("OK")
+            msgBox.show()
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

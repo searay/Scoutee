@@ -17,13 +17,16 @@ UITableViewDelegate, UITableViewDataSource {
     
     var listing : Listing = Listing()
     var listingDetail : ListingDetail = ListingDetail()
-    var selectedImage : UIImage = UIImage()
+    var selectedImageIndex = 0
     
     @IBOutlet weak var reviewTable: UITableView!
     @IBOutlet weak var listingLocationMap: MKMapView!
     @IBOutlet weak var actionToolbar: UIToolbar!
     
+    @IBOutlet weak var webBrowseActionButton: UIBarButtonItem!
+    @IBOutlet weak var buttonContainer: UIView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    
     @IBAction func callListing(sender: AnyObject) {
         if let phoneNumber = listing.phoneNumber as String?, loc = listing.location as NSString? {
             if let listingId = listing.id as String! {
@@ -51,6 +54,7 @@ UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         setUp()
     }
+
     
     func setUp() {
         if let loc = listing.location as NSString? {
@@ -88,6 +92,10 @@ UITableViewDelegate, UITableViewDataSource {
             self.listingLocationMap.zoomEnabled = false
             self.listingLocationMap.scrollEnabled = false
             self.listingLocationMap.userInteractionEnabled = false
+            
+            if self.listingDetail.webSite.length < 1 {
+                self.webBrowseActionButton.enabled = false
+            }
         }
     }
     
@@ -119,19 +127,23 @@ UITableViewDelegate, UITableViewDataSource {
             else if segueIdentifier == "ShowImage" {
                 let destinationController : ListingImageDisplayController = segue.destinationViewController as! ListingImageDisplayController
             
-                destinationController.listingImage = self.selectedImage
+                destinationController.imageArray = self.listingDetail.photos
+                destinationController.imageIndex = self.selectedImageIndex
                 
             }
         }
     }
     
+    @IBAction func showTimings(sender: AnyObject)
+    {
+    }
        
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listingDetail.reviews.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 120
+        return 130
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -151,7 +163,7 @@ UITableViewDelegate, UITableViewDataSource {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell : ListingPhotoCell = self.photoCollectionView.cellForItemAtIndexPath(indexPath) as! ListingPhotoCell
         
-        self.selectedImage = cell.businessPhotoImage.image!
+        self.selectedImageIndex = indexPath.row
         
         performSegueWithIdentifier("ShowImage", sender: self)
     }
@@ -161,12 +173,28 @@ UITableViewDelegate, UITableViewDataSource {
         
         // align controls
         
-        self.photoCollectionView.frame = CGRect(x:self.photoCollectionView.frame.origin.x,
-            y:self.photoCollectionView.frame.origin.y,width:self.view.frame.width,height:self.photoCollectionView.bounds.height)
-        
         self.listingLocationMap.frame = CGRect(x:0,
             y:self.listingLocationMap.frame.origin.y,width:self.view.frame.width,height:self.listingLocationMap.bounds.height)
-
+        
+        let tablePos = self.listingLocationMap.bounds.height + self.listingLocationMap.frame.origin.y
+        
+        self.reviewTable.frame = CGRect(x:self.reviewTable.frame.origin.x,y:tablePos,
+                width:self.view.frame.size.width,height:self.view.frame.height - tablePos)
+        
+        self.buttonContainer.frame = CGRect(x:self.buttonContainer.frame.origin.x,y:self.buttonContainer.frame.origin.y,width:self.view.frame.size.width+10,height:self.buttonContainer.frame.size.height)
+        
+        if listing.pics.count < 1 {
+            self.photoCollectionView.hidden = true;
+            self.listingLocationMap.frame = CGRect(x: self.listingLocationMap.frame.origin.x, y: 42, width: self.listingLocationMap.frame.size.width, height: self.listingLocationMap.frame.height + self.photoCollectionView.frame.size.height)
+        } else {
+            self.photoCollectionView.frame = CGRect(x:self.photoCollectionView.frame.origin.x,
+                y:self.photoCollectionView.frame.origin.y,width:self.view.frame.width+10,height:self.photoCollectionView.bounds.height)
+        }
+        
+        if listingDetail.reviews.count < 1 {
+            self.reviewTable.hidden = true;
+            self.listingLocationMap.frame = CGRect(x: self.listingLocationMap.frame.origin.x, y: self.listingLocationMap.frame.origin.y, width: self.listingLocationMap.frame.size.width, height: self.listingLocationMap.frame.height + self.reviewTable.frame.size.height)
+        }
     }
 
     

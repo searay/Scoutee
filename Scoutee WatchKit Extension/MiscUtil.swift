@@ -55,13 +55,13 @@ class MiscUtil {
     }
     
     class func getDistanceFormatted(distance: Double) -> String {
-        var dist = String(format: "%.2f meters",distance)
+        //var dist = String(format: "%.2f meters",distance)
         
-        if distance > 1609.0 {
-            dist = String(format: "%.2f miles",distance/1609)
-        } else {
-            dist = String(format: "%.2f km",distance/1000)
-        }
+        //if distance > 1609.0 {
+            var dist = String(format: "%.2f mi",distance/1609)
+        //} //else {
+          //  dist = String(format: "%.2f km",distance/1000)
+        //}
         
         return dist;
     }

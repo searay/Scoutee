@@ -12,6 +12,7 @@ import CoreLocation
 class SearchResultsListController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var switchContainer: UIView!
     @IBOutlet weak var sortBySwitch: UISegmentedControl!
     @IBOutlet weak var resultsListView: UITableView!
@@ -21,6 +22,7 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
     var searchCategory = ""
     var locationManager : CLLocationManager = CLLocationManager()
     var currentListingIndex = 0
+   
     
     @IBAction func sortValueChanged(sender: AnyObject) {
         var sortByDistance : Bool = sortBySwitch.selectedSegmentIndex == 0 ? true : false
@@ -29,8 +31,7 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
         self.resultsListView.reloadData()
     }
     
-    func sortListings(listings : [Listing],byDistance : Bool) -> [Listing]{
-        
+    func sortListings(listings : [Listing],byDistance : Bool) -> [Listing] {
         if listings.count > 1 {
             return listings.sorted {
                 if byDistance == true {
@@ -69,18 +70,21 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
         setUp()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        populateResultsList()
+    }
+    
     func setUp() {
         self.initializeLocationService()
-        populateResultsList()
-        
-        
         var nib = UINib(nibName: "ListingTableCell", bundle: nil)
         self.resultsListView.registerNib(nib, forCellReuseIdentifier: "listingCell")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
-         self.switchContainer.frame = CGRect(x:self.switchContainer.frame.origin.x,y:0,width:self.view.frame.width,height:self.switchContainer.bounds.height)
+        
+        self.resultsListView.frame = CGRect(x:self.resultsListView.frame.origin.x,y:self.resultsListView.frame.origin.y,
+            width:self.view.frame.size.width,height:self.view.frame.height)
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,7 +108,7 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 90.0
+        return 115.0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -123,25 +127,15 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
         var isOpen = (listing.open == "Open") ? true : false
             
         cell.listingAvailabilityLabel.text = isOpen ? "Open" : "Closed"
-        
-        if isOpen == false {
-            //cell.listingAvailabilityLabel.backgroundColor = UIColor.orangeColor()
-        }
-        
         cell.listingAvailabilityLabel.hidden = isOpen ? true : false;
         cell.listingOpenStatusImage.hidden = isOpen  ? false : true;
-        //cell.listingAvailabilityLabel.textColor = isOpen ? UIColor.blackColor() : UIColor.whiteColor()
         cell.selectionStyle = UITableViewCellSelectionStyle.Blue
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         
         if listing.open == "Unknown" {
             cell.listingAvailabilityLabel.hidden = true
             cell.listingOpenStatusImage.hidden = true
         }
         
-            
-        
-        //UIColor(red: 0.23529413342475891, green: 0.91764712333679199, blue: 0.86666673421859741, alpha: 1)
         return cell
     }
     
@@ -153,6 +147,8 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
             
         }
         else {
+            self.activityIndicator.startAnimating()
+            
             let encodedQueryString = self.searchKey.stringByReplacingOccurrencesOfString("|", withString: "%7C")
             let locationString = String(format: "%f,%f",locationManager.location.coordinate.latitude,
             locationManager.location.coordinate.longitude)
@@ -161,6 +157,8 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
             let finder : PlaceFinder = PlaceFinder()
         
             self.listings = finder.getResults(query,SortByDistance : sortBySwitch.selectedSegmentIndex==0 ? true : false) as [Listing]
+            
+            self.activityIndicator.stopAnimating()
        }
     }
 }

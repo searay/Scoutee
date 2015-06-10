@@ -25,6 +25,8 @@ class ListingReviewController : UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        self.reviewTextView.frame = CGRect(x: 2, y: self.reviewTextView.frame.origin.y, width: self.view.frame.width, height: self.view.frame.height)
     }
     
     override func viewDidLoad() {

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EOi-JM-UMb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Scoutee-->
@@ -69,33 +70,35 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R8f-ug-Hq2">
-                                <rect key="frame" x="0.0" y="0.0" width="605" height="44"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fPC-wV-boy">
-                                        <rect key="frame" x="156" y="8" width="92" height="29"/>
-                                        <segments>
-                                            <segment title="" image="map-pin-down-mini.png"/>
-                                            <segment title="" image="star-mini.png"/>
-                                        </segments>
-                                        <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="sortValueChanged:" destination="tKd-xL-d6J" eventType="valueChanged" id="KDE-Nw-7TB"/>
-                                        </connections>
-                                    </segmentedControl>
-                                </subviews>
-                                <color key="backgroundColor" red="0.92941182850000004" green="0.53725492949999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="aKG-N6-RdB">
+                                <rect key="frame" x="177" y="292" width="20" height="20"/>
+                                <color key="color" red="0.33282377990000001" green="0.56104893040000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" alwaysBounceVertical="YES" maximumZoomScale="16" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="PQg-Ix-gXa">
-                                <rect key="frame" x="0.0" y="52" width="375" height="581"/>
+                                <rect key="frame" x="0.0" y="38" width="375" height="581"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="tKd-xL-d6J" id="147-69-FzD"/>
                                     <outlet property="delegate" destination="tKd-xL-d6J" id="CLf-7N-hY4"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" misplaced="YES" selected="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8av-fB-0bK">
+                                <rect key="frame" x="123" y="0.0" width="108" height="29"/>
+                                <segments>
+                                    <segment title="" image="map-pin-down-mini.png"/>
+                                    <segment title="" image="star-mini.png"/>
+                                </segments>
+                                <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="sortValueChanged:" destination="tKd-xL-d6J" eventType="valueChanged" id="hU5-tH-FAf"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94901967050000002" green="0.56862747670000002" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="8av-fB-0bK" firstAttribute="top" secondItem="rpW-ug-FEP" secondAttribute="bottom" constant="5" id="DaD-8x-l6e"/>
+                            <constraint firstAttribute="centerX" secondItem="8av-fB-0bK" secondAttribute="centerX" id="ism-zQ-Oj7"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Results" id="IkF-Os-IY4">
                         <barButtonItem key="backBarButtonItem" title=" " id="F3A-oi-eJv"/>
@@ -103,9 +106,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="aKG-N6-RdB" id="9nZ-4m-gK6"/>
                         <outlet property="resultsListView" destination="PQg-Ix-gXa" id="Hyo-Iy-Hgw"/>
-                        <outlet property="sortBySwitch" destination="fPC-wV-boy" id="Avc-1M-eHT"/>
-                        <outlet property="switchContainer" destination="R8f-ug-Hq2" id="SNR-Xc-hzY"/>
+                        <outlet property="sortBySwitch" destination="8av-fB-0bK" id="Vfm-bx-ebq"/>
                         <segue destination="tbr-7W-Dbj" kind="show" identifier="ShowListingDetails" id="WPF-qC-INW"/>
                     </connections>
                 </viewController>
@@ -126,7 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="97B-Uy-CQL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
+                                <rect key="frame" x="-2" y="36" width="375" height="131"/>
                                 <color key="backgroundColor" red="0.92941182850000004" green="0.53725492949999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="mkp-b5-4Vl">
                                     <size key="itemSize" width="50" height="50"/>
@@ -153,8 +156,12 @@
                                     <outlet property="delegate" destination="tbr-7W-Dbj" id="Hvc-ai-viW"/>
                                 </connections>
                             </collectionView>
+                            <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f77-72-QAm">
+                                <rect key="frame" x="-2" y="167" width="382" height="205"/>
+                                <color key="tintColor" red="0.0" green="1" blue="0.090196080509999998" alpha="1" colorSpace="deviceRGB"/>
+                            </mapView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4u-wv-1I7">
-                                <rect key="frame" x="0.0" y="125" width="389" height="44"/>
+                                <rect key="frame" x="-7" y="-5" width="412" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGU-8I-8Ps">
                                         <rect key="frame" x="8" y="8" width="59" height="28"/>
@@ -188,20 +195,26 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.23286695710455763" green="0.23286695710455763" blue="0.23286695710455763" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="N9V-wm-quK">
-                                <rect key="frame" x="0.0" y="371" width="375" height="268"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="N9V-wm-quK">
+                                <rect key="frame" x="0.0" y="371" width="380" height="238"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="238" id="aB9-IB-Qok"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="tbr-7W-Dbj" id="ueU-bE-ad6"/>
                                     <outlet property="delegate" destination="tbr-7W-Dbj" id="xsu-Ox-trj"/>
                                 </connections>
                             </tableView>
-                            <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f77-72-QAm">
-                                <rect key="frame" x="-2" y="167" width="382" height="205"/>
-                                <color key="tintColor" red="0.0" green="1" blue="0.090196080509999998" alpha="1" colorSpace="deviceRGB"/>
-                            </mapView>
                         </subviews>
+                        <color key="backgroundColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.89782591879999996" green="0.89892346519999999" blue="0.91567187500000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="N9V-wm-quK" secondAttribute="bottom" constant="-6" id="27T-NY-GKI"/>
+                            <constraint firstItem="N9V-wm-quK" firstAttribute="trailing" secondItem="f77-72-QAm" secondAttribute="trailing" id="Nyu-c6-Fyo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N9V-wm-quK" secondAttribute="trailing" constant="-21" id="iAY-ee-5Xf"/>
+                            <constraint firstItem="N9V-wm-quK" firstAttribute="leading" secondItem="5Tl-2g-WAr" secondAttribute="leading" id="lKc-jF-zN3"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Information" id="wnO-ml-NA1">
                         <barButtonItem key="backBarButtonItem" title=" ." id="Y8b-zL-Owy"/>
@@ -214,9 +227,11 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="buttonContainer" destination="S4u-wv-1I7" id="Od5-t3-cCU"/>
                         <outlet property="listingLocationMap" destination="f77-72-QAm" id="eOX-8k-n5N"/>
                         <outlet property="photoCollectionView" destination="97B-Uy-CQL" id="TqN-N6-x1c"/>
                         <outlet property="reviewTable" destination="N9V-wm-quK" id="5I9-Tr-THK"/>
+                        <outlet property="webBrowseActionButton" destination="EmS-iG-cgU" id="3sz-Wh-ddh"/>
                         <segue destination="y9S-th-1eG" kind="show" identifier="ShowReview" id="Pgc-Xg-3Nh"/>
                     </connections>
                 </viewController>
@@ -301,7 +316,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ratings : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBd-TF-hfn">
                                 <rect key="frame" x="5" y="8" width="74" height="21"/>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="***" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t35-1H-mOu">
