@@ -128,7 +128,7 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="97B-Uy-CQL">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="97B-Uy-CQL">
                                 <rect key="frame" x="-2" y="36" width="375" height="131"/>
                                 <color key="backgroundColor" red="0.92941182850000004" green="0.53725492949999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="mkp-b5-4Vl">
@@ -156,9 +156,12 @@
                                     <outlet property="delegate" destination="tbr-7W-Dbj" id="Hvc-ai-viW"/>
                                 </connections>
                             </collectionView>
-                            <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f77-72-QAm">
+                            <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f77-72-QAm">
                                 <rect key="frame" x="-2" y="167" width="382" height="205"/>
                                 <color key="tintColor" red="0.0" green="1" blue="0.090196080509999998" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="205" id="VVR-rT-91g"/>
+                                </constraints>
                             </mapView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4u-wv-1I7">
                                 <rect key="frame" x="-7" y="-5" width="412" height="44"/>
@@ -212,8 +215,14 @@
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="N9V-wm-quK" secondAttribute="bottom" constant="-6" id="27T-NY-GKI"/>
                             <constraint firstItem="N9V-wm-quK" firstAttribute="trailing" secondItem="f77-72-QAm" secondAttribute="trailing" id="Nyu-c6-Fyo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="97B-Uy-CQL" secondAttribute="trailing" constant="-14" id="OlZ-p0-9oN"/>
+                            <constraint firstItem="f77-72-QAm" firstAttribute="leading" secondItem="97B-Uy-CQL" secondAttribute="leading" id="UDI-sf-UBR"/>
+                            <constraint firstItem="f77-72-QAm" firstAttribute="leading" secondItem="5Tl-2g-WAr" secondAttribute="leadingMargin" constant="-18" id="i7i-rw-bGQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="N9V-wm-quK" secondAttribute="trailing" constant="-21" id="iAY-ee-5Xf"/>
                             <constraint firstItem="N9V-wm-quK" firstAttribute="leading" secondItem="5Tl-2g-WAr" secondAttribute="leading" id="lKc-jF-zN3"/>
+                            <constraint firstItem="97B-Uy-CQL" firstAttribute="top" secondItem="3Tv-eK-aNa" secondAttribute="bottom" constant="36" id="rWN-2X-gPQ"/>
+                            <constraint firstItem="f77-72-QAm" firstAttribute="top" secondItem="97B-Uy-CQL" secondAttribute="bottom" id="tsA-DF-OTr"/>
+                            <constraint firstItem="Slt-iT-wf1" firstAttribute="top" secondItem="f77-72-QAm" secondAttribute="bottom" constant="231" id="vzb-UD-HtY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Information" id="wnO-ml-NA1">
@@ -369,7 +378,7 @@
         <image name="car-blue" width="30" height="30"/>
         <image name="globe-turn-7" width="30" height="30"/>
         <image name="man-walking" width="30" height="30"/>
-        <image name="map-pin-down-mini.png" width="29" height="30"/>
+        <image name="map-pin-down-mini.png" width="120" height="120"/>
         <image name="star-mini.png" width="20" height="20"/>
         <image name="telephone-out-mini.png" width="20" height="20"/>
     </resources>

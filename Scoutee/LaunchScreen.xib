@@ -10,30 +10,23 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="startScreenIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Ao-Io-jca">
-                    <rect key="frame" x="172" y="86" width="76" height="67"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="SCOUTEE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDE-hI-3Ca">
-                    <rect key="frame" x="98" y="136" width="124" height="38"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="33"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scoutee" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDE-hI-3Ca">
+                    <rect key="frame" x="81" y="259" width="158" height="51"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="42"/>
+                    <color key="textColor" red="0.92941182850000004" green="0.53725492949999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                     <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <size key="shadowOffset" width="4" height="1"/>
+                    <size key="shadowOffset" width="2" height="2"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.23286695709999999" green="0.23286695709999999" blue="0.23286695709999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="5Ao-Io-jca" secondAttribute="centerX" id="iBO-1X-xf6"/>
-                <constraint firstAttribute="centerX" secondItem="HDE-hI-3Ca" secondAttribute="centerX" id="iDQ-sv-ddd"/>
-                <constraint firstAttribute="centerX" secondItem="HDE-hI-3Ca" secondAttribute="centerX" id="y8Q-mc-w5d"/>
+                <constraint firstAttribute="centerX" secondItem="HDE-hI-3Ca" secondAttribute="centerX" id="b47-Jg-1et"/>
+                <constraint firstAttribute="centerY" secondItem="HDE-hI-3Ca" secondAttribute="centerY" id="xBy-lD-hZL"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
-    <resources>
-        <image name="startScreenIcon.png" width="120" height="120"/>
-    </resources>
 </document>

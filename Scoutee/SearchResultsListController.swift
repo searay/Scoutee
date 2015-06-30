@@ -71,7 +71,6 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewWillAppear(animated: Bool) {
-        //populateResultsList()
         self.resultsListView.reloadData()
     }
     
@@ -138,28 +137,5 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
         }
         
         return cell
-    }
-    
-    
-    func populateResultsList() {
-        var dist = 30000
-        
-        if(locationManager.location == nil) {
-            
-        }
-        else {
-            self.activityIndicator.startAnimating()
-            
-            let encodedQueryString = self.searchKey.stringByReplacingOccurrencesOfString("|", withString: "%7C")
-            let locationString = String(format: "%f,%f",locationManager.location.coordinate.latitude,
-            locationManager.location.coordinate.longitude)
-
-            let query : LocationQuery = LocationQuery(what:encodedQueryString,location:locationString,distance:dist)
-            let finder : PlaceFinder = PlaceFinder()
-        
-            self.listings = finder.getResults(query,SortByDistance : sortBySwitch.selectedSegmentIndex==0 ? true : false) as [Listing]
-            
-            self.activityIndicator.stopAnimating()
-       }
     }
 }

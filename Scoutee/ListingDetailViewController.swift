@@ -153,7 +153,12 @@ UITableViewDelegate, UITableViewDataSource {
                             self.reviewTable.reloadData()
                             self.reviewTable.hidden = listingInfo.reviews.count < 1
                             
-                             self.progressAlert.dismissWithClickedButtonIndex(0, animated: true)
+                            if listingInfo.webSite.length < 1 {
+                                self.webBrowseActionButton.enabled = false
+                            }
+
+                            
+                            self.progressAlert.dismissWithClickedButtonIndex(0, animated: true)
                         })
                         
                         // end
@@ -166,7 +171,8 @@ UITableViewDelegate, UITableViewDataSource {
     }
 
     
-    func setUp() {
+    func setUp()
+    {
         if let loc = listing.location as NSString? {
             
             self.progressAlert = UIAlertView(title: "Getting Detail Information", message: "", delegate: self, cancelButtonTitle: nil)
@@ -207,9 +213,6 @@ UITableViewDelegate, UITableViewDataSource {
                 getListingDetailById(id)
             }
 
-            if self.listingDetail.webSite.length < 1 {
-                self.webBrowseActionButton.enabled = false
-            }
         }
     }
     

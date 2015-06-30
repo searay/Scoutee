@@ -244,7 +244,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let query : LocationQuery = LocationQuery(what:encodedQueryString,location:locationString,distance:dist)
             let finder : PlaceFinder = PlaceFinder()
             
-            self.progressAlert = UIAlertView(title: "Searching For \(self.getRowTitle())", message: "", delegate: self, cancelButtonTitle: nil)
+            self.progressAlert = UIAlertView(title: "Searching for \(self.getRowTitle().lowercaseString)", message: "", delegate: self, cancelButtonTitle: nil)
             self.progressAlert.show()
             
             let queryString = buildQueryString(query, SortByDistance: false, Rank: false)
