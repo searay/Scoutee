@@ -18,6 +18,7 @@ UITableViewDelegate, UITableViewDataSource {
     var listing : Listing = Listing()
     var listingDetail : ListingDetail = ListingDetail()
     var selectedImageIndex = 0
+    var progressAlert = UIAlertView()
     
     @IBOutlet weak var reviewTable: UITableView!
     @IBOutlet weak var listingLocationMap: MKMapView!
@@ -54,10 +55,122 @@ UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         setUp()
     }
+    
+    func getListingDetailById(id : String) {
+        var listingInfo = ListingDetail()
+        let queryString = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(id)&key=\(PlaceFinder.apiKey)"
+        
+        if let url = NSURL(string: queryString)
+        {
+            var urlRequest : NSMutableURLRequest = NSMutableURLRequest(URL: url)
+            var urlResponse : NSURLResponse?
+            var error : NSErrorPointer = nil
+            var session : NSURLSession = NSURLSession.sharedSession()
+            
+            var task = session.dataTaskWithRequest(urlRequest) {
+                (data, response, error) -> Void in
+                
+                if (error != nil) {
+                    
+                }
+                else {
+                    var jsonError : NSErrorPointer = nil
+                    var nextPageId = ""
+                    
+                    if data != nil {
+                        
+                        // start
+
+                        var jsonData : NSDictionary =  NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: jsonError) as! NSDictionary
+                        
+                        var status = jsonData.valueForKey("status") as! String
+                        var result = jsonData.valueForKey("result") as! NSDictionary
+                        
+                        if status == "OK"
+                        {
+                            if result.allKeys.count > 0
+                            {
+                                if let phone = result.valueForKey("formatted_phone_number") as? String {
+                                    listingInfo.phoneNumber = PlaceFinder().formatPhoneNumber(phone)
+                                }
+                                
+                                if let openHours = result.valueForKey("opening_hours") as? NSDictionary {
+                                    if let hours = openHours.valueForKey("weekday_text") as! NSArray? {
+                                        for hour in hours {
+                                            listingInfo.hours.append("\(hour)")
+                                        }
+                                        
+                                    }
+                                }
+                                
+                                if let photos = result.valueForKey("photos") as? NSArray {
+                                    for photo in photos {
+                                        var ref = (photo as! NSDictionary).valueForKey("photo_reference") as! String
+                                        listingInfo.photos.append(ref)
+                                    }
+                                }
+                                
+                                if listingInfo.photos.count < 1 {
+                                    listingInfo.photos.append("no-images")
+                                }
+                                
+                                if let site = result.valueForKey("website") as? NSString {
+                                    listingInfo.webSite = site
+                                }
+                                
+                                if let reviews = result.valueForKey("reviews") as? NSArray {
+                                    for review in reviews {
+                                        let reviewObj = review as! NSDictionary
+                                        
+                                        var reviewItem = CustomerReview()
+                                        
+                                        if let reviewer = reviewObj.valueForKey("author_name") as? String {
+                                            reviewItem.name = reviewer
+                                        }
+                                        
+                                        if let reviewText = reviewObj.valueForKey("text") as? String{
+                                            reviewItem.reviewText = reviewText
+                                        }
+                                        
+                                        if let rating = reviewObj.valueForKey("rating") as? Double {
+                                            reviewItem.rating = rating
+                                        }
+                                        
+                                        listingInfo.reviews.append(reviewItem)
+                                    }
+                                }
+                                
+                                self.listingDetail = listingInfo
+                            }
+                        }
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            if self.listingDetail.webSite.length < 1 {
+                                self.webBrowseActionButton.enabled = false
+                            }
+
+                            self.photoCollectionView.reloadData()
+                            self.reviewTable.reloadData()
+                            self.reviewTable.hidden = listingInfo.reviews.count < 1
+                            
+                             self.progressAlert.dismissWithClickedButtonIndex(0, animated: true)
+                        })
+                        
+                        // end
+                    }
+                }
+            }
+            
+            task.resume()
+        }
+    }
 
     
     func setUp() {
         if let loc = listing.location as NSString? {
+            
+            self.progressAlert = UIAlertView(title: "Getting Detail Information", message: "", delegate: self, cancelButtonTitle: nil)
+            self.progressAlert.show()
            
             var location = parseLocationString(loc as NSString!) as CLLocationCoordinate2D!
             let region = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
@@ -69,10 +182,6 @@ UITableViewDelegate, UITableViewDataSource {
             listingLocationMap.addAnnotation(annotation)
             listingLocationMap.setRegion(region, animated: true)
             
-            if let id = listing.id as String? {
-                self.listingDetail = PlaceFinder().getListingDetailById(id)
-            }
-                        
             var nib = UINib(nibName: "ListingPhotoCell", bundle: nil)
             
             self.photoCollectionView.registerNib(nib, forCellWithReuseIdentifier: "ListingPhotoCell")
@@ -93,6 +202,11 @@ UITableViewDelegate, UITableViewDataSource {
             self.listingLocationMap.scrollEnabled = false
             self.listingLocationMap.userInteractionEnabled = false
             
+            if let id = listing.id as String? {
+                //self.listingDetail = PlaceFinder().getListingDetailById(id)
+                getListingDetailById(id)
+            }
+
             if self.listingDetail.webSite.length < 1 {
                 self.webBrowseActionButton.enabled = false
             }

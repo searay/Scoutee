@@ -12,7 +12,7 @@
     
     class PlaceFinder : NSObject,NSURLConnectionDataDelegate {
         
-        static let apiKey = "AIzaSyBAJF32sh8J8voeAP525xwHXEeylAXQ66g" //"AIzaSyCjfOWwKoajoY8gPHaIvSyUEZPztFmWY80"
+        static let apiKey = "AIzaSyB3GnjBlI1Hfkp_KeViBqJlfz1rPMDtJxo" //"AIzaSyCjfOWwKoajoY8gPHaIvSyUEZPztFmWY80"
         
         override init() {
             super.init()

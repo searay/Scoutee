@@ -71,11 +71,12 @@ class SearchResultsListController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewWillAppear(animated: Bool) {
-        populateResultsList()
+        //populateResultsList()
+        self.resultsListView.reloadData()
     }
     
     func setUp() {
-        self.initializeLocationService()
+        //self.initializeLocationService()
         var nib = UINib(nibName: "ListingTableCell", bundle: nil)
         self.resultsListView.registerNib(nib, forCellReuseIdentifier: "listingCell")
     }
