@@ -54,6 +54,33 @@ class MiscUtil {
         )
     }
     
+    class func buildProgressDialog(title : String,parent : UIView) -> UIView {
+        var view : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
+        
+        view.backgroundColor = UIColor.brownColor()
+        view.alpha = 0.9
+        view.layer.cornerRadius = 5.0
+        view.clipsToBounds = true
+        view.center = CGPoint(x: parent.bounds.width/2, y: parent.bounds.height/2)
+        view.hidden = true
+        
+        var progress : UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        
+        progress.frame = CGRect(x: 35, y: 25, width: 50, height: 50)
+        view.addSubview(progress)
+        
+        var label : UILabel = UILabel(frame: CGRect(x: 5, y: 36, width: 115, height: 100))
+        label.text = title
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont(name: "Helvetica Neue Condense-Bold", size: 15.0)
+        label.textColor = UIColor.whiteColor()
+        view.addSubview(label)
+        
+        progress.startAnimating()
+        
+        return view
+    }
+    
     class func getDistanceFormatted(distance: Double) -> String {
         //var dist = String(format: "%.2f meters",distance)
         

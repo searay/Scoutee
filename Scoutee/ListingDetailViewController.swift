@@ -19,6 +19,7 @@ UITableViewDelegate, UITableViewDataSource {
     var listingDetail : ListingDetail = ListingDetail()
     var selectedImageIndex = 0
     var progressAlert = UIAlertView()
+    var progressView = UIView()
     
     @IBOutlet weak var reviewTable: UITableView!
     @IBOutlet weak var listingLocationMap: MKMapView!
@@ -27,6 +28,8 @@ UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var webBrowseActionButton: UIBarButtonItem!
     @IBOutlet weak var buttonContainer: UIView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    
+    
     
     @IBAction func callListing(sender: AnyObject) {
         if let phoneNumber = listing.phoneNumber as String?, loc = listing.location as NSString? {
@@ -70,8 +73,20 @@ UITableViewDelegate, UITableViewDataSource {
             var task = session.dataTaskWithRequest(urlRequest) {
                 (data, response, error) -> Void in
                 
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.hideProgressDialog()
+                })
+                
                 if (error != nil) {
-                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        var msgBox : UIAlertView = UIAlertView()
+                        msgBox.title = "Error"
+                        msgBox.message = "Unable to perform search \(error.description)."
+                        msgBox.delegate = self
+                        msgBox.addButtonWithTitle("OK")
+                        msgBox.show()
+                    })
+
                 }
                 else {
                     var jsonError : NSErrorPointer = nil
@@ -170,13 +185,37 @@ UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+    func buildProgressBarDialog() {
+        self.progressView = MiscUtil.buildProgressDialog("Loading",parent: self.view)
+        
+        if let dlg = UIApplication.sharedApplication().delegate {
+            if let win = dlg.window {
+                win?.rootViewController?.view.addSubview(self.progressView)
+                win?.rootViewController?.view.bringSubviewToFront(self.progressView)
+            }
+        }
+    }
+    
+    func hideProgressDialog() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.progressView.hidden = true
+        })
+    }
+    
+    func showProgressDialog() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.progressView.hidden = false
+        })
+    }
+
     
     func setUp()
     {
+        buildProgressBarDialog()
+        
         if let loc = listing.location as NSString? {
             
-            self.progressAlert = UIAlertView(title: "Getting Detail Information", message: "", delegate: self, cancelButtonTitle: nil)
-            self.progressAlert.show()
+            self.showProgressDialog()
            
             var location = parseLocationString(loc as NSString!) as CLLocationCoordinate2D!
             let region = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))

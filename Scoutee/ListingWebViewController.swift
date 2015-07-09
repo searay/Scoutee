@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 
-class ListingWebViewController : UIViewController {
+class ListingWebViewController : UIViewController, UIWebViewDelegate {
     @IBOutlet weak var webControl: UIWebView!
     var webSite : String = ""
+    var progressView : UIView = UIView()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -25,8 +26,43 @@ class ListingWebViewController : UIViewController {
         super.viewDidLayoutSubviews()
     }
     
+    func buildProgressBarDialog() {
+        self.progressView = MiscUtil.buildProgressDialog("Loading",parent: self.view)
+        
+        if let dlg = UIApplication.sharedApplication().delegate {
+            if let win = dlg.window {
+                win?.rootViewController?.view.addSubview(self.progressView)
+                win?.rootViewController?.view.bringSubviewToFront(self.progressView)
+            }
+        }
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        hideProgressDialog()
+    }
+    
+    func webViewDidStartLoad(webView: UIWebView) {
+        showProgressDialog()
+    }
+    
+    
+    func hideProgressDialog() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.progressView.hidden = true
+        })
+    }
+    
+    func showProgressDialog() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.progressView.hidden = false
+        })
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.buildProgressBarDialog()
         
         let url = NSURL(string: self.webSite)
         

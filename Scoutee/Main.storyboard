@@ -34,7 +34,7 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" maximumZoomScale="16" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="p8N-TX-lIT">
-                                <rect key="frame" x="0.0" y="112" width="600" height="471"/>
+                                <rect key="frame" x="1" y="111" width="600" height="471"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="NwO-41-DHO"/>
@@ -263,6 +263,9 @@
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KVU-iS-TuI">
                                 <rect key="frame" x="0.0" y="0.0" width="403" height="615"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="PXH-6J-Ppd" id="jzx-i8-oTi"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -378,7 +381,7 @@
         <image name="car-blue" width="30" height="30"/>
         <image name="globe-turn-7" width="30" height="30"/>
         <image name="man-walking" width="30" height="30"/>
-        <image name="map-pin-down-mini.png" width="120" height="120"/>
+        <image name="map-pin-down-mini.png" width="29" height="30"/>
         <image name="star-mini.png" width="20" height="20"/>
         <image name="telephone-out-mini.png" width="20" height="20"/>
     </resources>

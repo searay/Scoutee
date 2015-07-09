@@ -10,6 +10,8 @@ import UIKit
 import CoreLocation
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,CLLocationManagerDelegate {
+   
+    var progressView: UIView!
 
     @IBOutlet weak var mainCategoriesCollView: UICollectionView!
     @IBOutlet weak var subCategoryTableView: UITableView!
@@ -20,7 +22,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var currentIndex : Int = 0
     var locationManager : CLLocationManager = CLLocationManager()
     var searchResults : [Listing] = []
-    var progressAlert : UIAlertView = UIAlertView()
     var queryByRank : String = ""
     var allResults : NSMutableDictionary = NSMutableDictionary()
     
@@ -31,9 +32,37 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let COLLECTION_VIEW_CELL_NAME = "CategoryCollectionCell"
     let COLLECTION_VIEW_REUSE_ID = "categoryCollectionCell"
     
+    func hideProgressDialog() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.progressView.hidden = true
+        })
+    }
+    
+    func showProgressDialog() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.progressView.hidden = false
+        })
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+    }
+    
+    func buildProgressBarDialog() {
+        self.progressView = MiscUtil.buildProgressDialog("Loading",parent: self.view)
+        
+        if let dlg = UIApplication.sharedApplication().delegate {
+            if let win = dlg.window {
+                win?.rootViewController?.view.addSubview(self.progressView)
+                win?.rootViewController?.view.bringSubviewToFront(self.progressView)
+            }
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        hideProgressDialog()
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
@@ -45,6 +74,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func setUp() {
+        
+        self.buildProgressBarDialog()
         
         var screenSize : CGRect = UIScreen.mainScreen().bounds
         self.readDataFromCatalag()
@@ -170,16 +201,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func searchResultsHandler(searchError : String, location : String, results : NSMutableDictionary) {
+        
+        self.hideProgressDialog()
+        
         if (searchError != "") {
             
             NSLog("error -> \(searchError)");
             
-            var msgBox : UIAlertView = UIAlertView()
-            msgBox.title = "Error"
-            msgBox.message = "Unable to perform search \(searchError)."
-            msgBox.delegate = self
-            msgBox.addButtonWithTitle("OK")
-            msgBox.show()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                
+                var msgBox : UIAlertView = UIAlertView()
+                msgBox.title = "Error"
+                msgBox.message = "Unable to perform search \(searchError)."
+                msgBox.delegate = self
+                msgBox.addButtonWithTitle("OK")
+                msgBox.show()
+            })
         }
         else {
             
@@ -189,16 +226,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func searchResultsHandlerByRank(searchError : String, location : String, results : NSMutableDictionary) {
+        
+        self.hideProgressDialog()
+        
         if (searchError != "") {
             
             NSLog("error -> \(searchError)");
             
-            var msgBox : UIAlertView = UIAlertView()
-            msgBox.title = "Error"
-            msgBox.message = "Unable to perform search \(searchError)."
-            msgBox.delegate = self
-            msgBox.addButtonWithTitle("OK")
-            msgBox.show()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                var msgBox : UIAlertView = UIAlertView()
+                msgBox.title = "Error"
+                msgBox.message = "Unable to perform search \(searchError)."
+                msgBox.delegate = self
+                msgBox.addButtonWithTitle("OK")
+                msgBox.show()
+            })
+            
         }
         else {
             
@@ -219,12 +262,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     func navigateToResultsController() {
-        self.progressAlert.dismissWithClickedButtonIndex(0, animated: true)
         
-        if (self.searchResults.count > 0) {
+        if (self.searchResults.count > 0)
+        {
             dispatch_async(dispatch_get_main_queue())
-                {
-                    self.performSegueWithIdentifier("ShowResults", sender:self)
+            {
+                self.performSegueWithIdentifier("ShowResults", sender:self)
             }
             
             NSLog("result count -> \(self.searchResults.count)")
@@ -235,22 +278,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var rect = CGRect(x: self.subCategoryTableView.center.x, y: self.subCategoryTableView.center.y, width: 150, height: 150)
         
-        if self.locationManager.location != nil {
+        if self.locationManager.location != nil
+        {
+            self.showProgressDialog()
+            
             let dist = 30000
+            
             let encodedQueryString = getSearchKeyFromSelectedRow().stringByReplacingOccurrencesOfString("|", withString: "%7C")
+            
             let locationString = String(format: "%f,%f",locationManager.location.coordinate.latitude,
                 locationManager.location.coordinate.longitude)
             
             let query : LocationQuery = LocationQuery(what:encodedQueryString,location:locationString,distance:dist)
+            
             let finder : PlaceFinder = PlaceFinder()
             
-            self.progressAlert = UIAlertView(title: "Searching for \(self.getRowTitle().lowercaseString)", message: "", delegate: self, cancelButtonTitle: nil)
-            self.progressAlert.show()
-            
             let queryString = buildQueryString(query, SortByDistance: false, Rank: false)
+            
             self.queryByRank = buildQueryString(query, SortByDistance: false, Rank: true)
             
             self.getResults( queryString, location : query.location, finishHandler : searchResultsHandler)
+            
         } else {
             
             var msgBox : UIAlertView = UIAlertView()
@@ -369,11 +417,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
             
-            if task.state != NSURLSessionTaskState.Running {
-                task.resume()
-            } else {
-                task.cancel()
-            }
+            task.resume()
         }
     }
     
